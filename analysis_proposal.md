@@ -28,9 +28,9 @@ This project will challenge my bioinformatic skillset; however, it will also hel
 
 1. [Alpha Aligner](https://bitbucket.org/thekswenson/alpha/src/master/)
 1. [Roary](http://sanger-pathogens.github.io/Roary/)
-1. [ClustalW/MEGA6](https://academic.oup.com/mbe/article/ 30/5/1229/992850)
+1. [ClustalW & MEGA6](https://academic.oup.com/mbe/article/ 30/5/1229/992850)
 
-##GenBank Steno Phage Genomes
+## GenBank Steno Phage Genomes
 
 1. [GenBank: MG189906.1](https://www.ncbi.nlm.nih.gov/nuccore/MG189906)
 1. [GenBank: KR560069.1](https://www.ncbi.nlm.nih.gov/nuccore/KR560069)
@@ -41,4 +41,4 @@ This project will challenge my bioinformatic skillset; however, it will also hel
 1. [NCBI Reference Sequence: NC_048802.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_048802.1)
 1. [NCBI Reference Sequence: NC_048804.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_048804.1)
 
- 
+
