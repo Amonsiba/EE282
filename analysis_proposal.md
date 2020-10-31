@@ -6,7 +6,7 @@ Author: Alisha Monsibais
 
 The purpose of this bioinformatic projects is to characterize the eight steno phages isolated in the Whiteson lab during the summer of 2020. These eight steno phages could be an interesting avenue for treatment of _Stenotrophomonas maltophilia_ infections. _S. maltophilia_ is an emerging opportunistic pathogen that is difficult to treat with antibiotics, which is why our lab is interested in Phage Therapy (Brooke, 2012). Phage Therapy uses bacteriophages, or viruses that infect bacteria, to target and destroy the bacteria host cells (Golkar et al., 2014). The proposed analyses of this project includes examining the genomes of these bacteriophages to understand the core genes needed in infection as well as examining the phylogenetic relationship of the bacteriophages and comparing that information to host-range study that will be completed during my fall rotation.
 
-## Body Paragraph 
+## Body Paragraphs 
 
 The eight steno phages that were sent out for sequencing will be obtained in FASTQ format which will need to be processed into FASTA format. These FASTA files will then be processed in a bacteriophage specific aligner called alpha (Berard et al., 2016). If data is not received in time, eight stand-in steno phage genomes will be obtained form GenBank in FASTA format (see reference section). The key goal for this bioinformatics analyses includes characterizing and analyzing the genetic information of these bacteriophages. The strategies that will be employed will include the program Roary (Page et al., 2015) for comparative genomics while phylogenetic analysis will be explored with the use of ClustalW and MEGA6 (Hall, 2013).
  
@@ -14,7 +14,7 @@ The results for the pan genomic analysis will include graphical representation o
 
 ## Conclusion
 
-This project will challenge my bioinformatic skillset; however, it will also help me to better understand project organize strategize, using and troubleshooting various software/pipelines as well as compile data into visual representation for public understanding. This is a feasible project as it contains a small sample size, and the genomes of interest are bacteriophages which are generally smaller in nature. This question will help me gain insight into Phage Therapy that will not only aid in my understanding of bacteriophage but also host-viral interactions. Additionally, this entry level project will also help me to gain insight on the use of bioinformatics and how I can apply bioinformatics to complement my benchwork.
+This project will challenge my bioinformatic skillset; however, it will also help me to better understand project organize strategize, using and troubleshooting various software/pipelines as well as compile data into visual representation for public understanding. This is a feasible project as it contains a small sample size, and the genomes of interest are bacteriophages which are generally smaller in nature. This question will help me gain insight into Phage Therapy that will not only aid in my understanding of bacteriophage but also host-viral interactions. Additionally, this entry level project will help me to gain insight on the use of bioinformatics and how I can apply bioinformatics to complement my benchwork.
 
 ## References
 
