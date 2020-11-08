@@ -11,9 +11,9 @@ _Drosophila melanogaster_ genome was obtained in fasta format from the following
 >`wget ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.36_FB2020_05/fasta/dmel-all-chromosome-r6.36.fasta.gz`
 >
 
+
 #### File Integrity 
 Verification of the file integrity was completed using the checksum program. The following code was used to verify the checksum of the file downloaded to the orginial checksum located on the website. 
-
 >
 >`wget ftp://ftp.flybase.net/genomes/Drosophila_melanogaster/dmel_r6.36_FB2020_05/fasta/md5sum.txt` <br>
 >`md5sum --check <(grep dmel-all-chromosome-r6.36.fasta.gz md5sum.txt)`
@@ -81,4 +81,24 @@ A pipeline was then used to obtain the third column, features, independently fro
 >`cat dmel-all-r6.36.gtf | gawk -F '\t' '{print $3}' | sort | uniq -c | sort -k1,1nr > CompileReport1.txt`
 >
 
-2. Total number of genes per chromosome arm (X, Y, 2L, 3L, 3R, 4)  
+2. Total number of genes per chromosome arm (X, Y, 2L, 3L, 3R, 4)
+
+		2L         3516 genes <br>
+		2R         3653 genes <br>
+		3L         3486 genes <br>
+		3R         4225 genes <br>
+		4           114 genes <br>
+		X          2691 genes <br>
+		Y           113 genes <br>
+
+To obtain the genes per chromsomes arm the file was processed into a pipeline. The fields 3 and 1 were printed to the screen and only lines with "gene" were selected. Further selection was performed based on teh chromosome arm and then lines were sorted and tallied. The last 7 lines were included to remove. Output was plated in CompileReport2.txt
+>
+>`cat dmel-all-r6.36.gtf | gawk -F '\t' '{print $3 "\t" $1}' | grep -w gene | grep -E 'X|Y|2L|2R|3L|3R|4' | sort | uniq -c > CompileReport2.txt` 
+>
+For formating, the following code was used. Only the last 7 lines were selected to removed the unnessary data. Gene was then transformed into genes and columns were rearranged to make reading the data easier. Output was saved to CompileReport2formated.txt
+
+`cat CompileReport2.txt | tail -n 7 | sed 's/gene/genes/' | gawk -F '\t' '{print $1 "\t" $2}' > CompileReport2formated.txt`
+
+
+
+
