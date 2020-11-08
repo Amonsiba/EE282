@@ -49,5 +49,36 @@ Verification of the file integrity was completed using the checksum program. The
 >
 
 #### Compile a Report Summarizing the Annotation 
-1. Total number of features of each type, sorted from the most ocmmon to the least common 
+1. Total number of features of each type, sorted from the most common to the least common 
+
+189268 exon
+ 162578 CDS
+  46664 5UTR
+  33629 3UTR
+  30812 start_codon
+  30754 stop_codon
+  30728 mRNA
+  17875 gene
+   3047 ncRNA
+    485 miRNA
+    366 pseudogene
+    312 tRNA
+    300 snoRNA
+    262 pre_miRNA
+    115 rRNA
+     32 snRNA
+
+Unzipping the file was done with this code
+>
+>`gunzip dmel-all-chromosome-r6.36.fasta.gz`<br>
+>
+To review the file in a clean tabular format, the following code was used. 
+>
+>`column -s $'\t' -t dmel-all-r6.36.gtf | less -S`
+>
+A pipeline was then used to obtain the third column, features, independently from the other columns. The features were then sorted and tallied which was then further sorted from the most common to the least common features that were present in the date. Output was then put into a file entitled CompileReport1.txt
+>
+>`cat dmel-all-r6.36.gtf | gawk -F '\t' '{print $3}' | sort | uniq -c | sort -k1,1nr > CompileReport1.txt`
+>
+
 2. Total number of genes per chromosome arm (X, Y, 2L, 3L, 3R, 4)  
