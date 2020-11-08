@@ -51,22 +51,22 @@ Verification of the file integrity was completed using the checksum program. The
 #### Compile a Report Summarizing the Annotation 
 1. Total number of features of each type, sorted from the most common to the least common 
 
-189268 exon
- 162578 CDS
-  46664 5UTR
-  33629 3UTR
-  30812 start_codon
-  30754 stop_codon
-  30728 mRNA
-  17875 gene
-   3047 ncRNA
-    485 miRNA
-    366 pseudogene
-    312 tRNA
-    300 snoRNA
-    262 pre_miRNA
-    115 rRNA
-     32 snRNA
+ 189268 exon <br>
+ 162578 CDS <br>
+  46664 5UTR <br>
+  33629 3UTR <br>
+  30812 start_codon <br>
+  30754 stop_codon <br>
+  30728 mRNA <br>
+  17875 gene <br>
+   3047 ncRNA <br>
+    485 miRNA <br>
+    366 pseudogene <br>
+    312 tRNA <br>
+    300 snoRNA <br>
+    262 pre_miRNA <br>
+    115 rRNA <br>
+     32 snRNA <br>
 
 Unzipping the file was done with this code
 >
