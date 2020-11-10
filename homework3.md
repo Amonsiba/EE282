@@ -97,9 +97,9 @@ To obtain the genes per chromsomes arm the file was processed into a pipeline. F
 >`cat dmel-all-r6.36.gtf | gawk -F '\t' '{print $3 "\t" $1}' | grep -w gene | grep -E 'X|Y|2L|2R|3L|3R|4' | sort | uniq -c > CompileReport2.txt` 
 >
 Formating was accomplished with the following code, in which only the last 7 lines were selected to removed unnecessary data. Gene was then transformed into genes and columns were rearranged to make reading the data easier. Output was saved to CompileReport2formated.txt
-
-`cat CompileReport2.txt | tail -n 7 | sed 's/gene/genes/' | gawk -F '\t' '{print $1 "\t" $2}' > CompileReport2formated.txt`
-
+>
+>`cat CompileReport2.txt | tail -n 7 | sed 's/gene/genes/' | gawk -F '\t' '{print $1 "\t" $2}' > CompileReport2formated.txt`
+>
 
 
 
