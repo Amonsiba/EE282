@@ -1,7 +1,7 @@
 
 # Homework 4
 
-Author: Alisha Monsibais
+Author: Alisha N. Monsibais
 
 ## Part I: Summarize partitions of a genome assembly 
 
