@@ -45,15 +45,25 @@ faSize dmelr6.lte.fa.gz
 
 #Makes the file for Sequence name, sequence length and sequence GC(%)
 #For sequence > 100 kb
-bioawk -c fastx 'length($seq) > 100000{print ">"$name "\t" length($seq) "\t" gc($seq)}' dmel-all-chromosome-r6.36.fasta.gz | column -t > dmelr6.gt.txt
-#For sequences <= 100 kb:
-bioawk -c fastx 'length($seq) <= 100000{print ">"$name "\t" length($seq) "\t" gc($seq)}' dmel-all-chromosome-r6.36.fasta.gz | column -t > dmelr6.lte.txt
+bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.gt.fa.gz | sort  -k1,1rn > dmelr6.gt.txt
 
+#For sequences <= 100 kb:
+bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.lte.fa.gz | sort  -k1,1rn > dmelr6.lte.txt
 
 #Answers 
 
 #1. Sequence length distribution (Histogram in log scale)
 
+
 #2. Sequence GC% distribution (Histogram) 
 
-#3. Cumulative sequence size sorted from the larges to smallest sequences (6 plots)
+
+
+#3. Cumulative sequence size sorted from the larges to smallest sequences
+#To get the cumulative sequence size plot
+#For the sequences >100 kb:
+plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display 
+#For the sequence <=100 kb:
+plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display
+
+
