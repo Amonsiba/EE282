@@ -21,15 +21,22 @@ bioawk -c fastx 'length($seq) > 100000{ print ">"$name; print $seq }'  dmel-all-
 #For sequences <=100 kb:
 bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta > lessorequal.txt
 
-
+#Identifying Nucleotide, Ns and sequences
+#For the sequence >100 kb: 
+faSize greaterthan.txt
+#For the sequence <=100 kb:
+faSize lessorequal.txt
 
 #Answers
+#For the sequences >100 kb"
+#1. Total number of nucleotides		137057575
+#2. Total number of Ns 			490385
+#3. Total number of sequences		7
 
-#1. Total number of nucleotides 
-
-#2. Total number of Ns
-
-#3. Total number of sequences
+#For the sequences <=100 kb
+#1. Total number of nucleotides 	5515449
+#2. Total number of Ns			662593
+#3. Total number of sequences		1863
 
 #Plots of the following for all sequences =/< 100 kb and all sequences >100 kb:
 
