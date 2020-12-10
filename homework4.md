@@ -94,19 +94,20 @@ Author: Alisha N. Monsibais
 
 **1. Sequence length distribution (Histogram in log scale)**
 ![image](http://i.ibb.co/0XQJJRs/1-1.jpg)
-![image](https://ibb.co/Bs8xDNL)
+![image](http://i.ibb.co/9YRLXtn/1-2.jpg)
 **2. Sequence GC% distribution (Histogram)**
+![image](https://i.ibb.co/xjL7vFj/2-1.jpg)
+![image](https://i.ibb.co/hf5Lt08/2-2.jpg)
+**3. Cumulative sequence size sorted from the larges to smallest sequences**
 
-
-
-
-#Last question was processed in the Terminal
-#3. Cumulative sequence size sorted from the larges to smallest sequences
-#To get the cumulative sequence size plot
-#For the sequences >100 kb:
-plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display 
-#For the sequence <=100 kb:
-plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display
+>To get the cumulative sequence size plot
+>For the sequences >100 kb:
+>`plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display`
+![image](https://i.ibb.co/KFG5sL0/3-1.jpg)
+ 
+>For the sequence <=100 kb:
+>`plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display`
+![image](https://i.ibb.co/WpqNmHJ/3-2.png)
 
 
 
