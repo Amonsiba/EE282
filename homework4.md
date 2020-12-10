@@ -93,7 +93,8 @@ Author: Alisha N. Monsibais
 ### Answers 
 
 **1. Sequence length distribution (Histogram in log scale)**
-![image]'~/1.1.jpg'
+![image]'~/pictures/1.1.jpg'
+
 **2. Sequence GC% distribution (Histogram)**
 
 
