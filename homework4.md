@@ -45,9 +45,9 @@ Author: Alisha N. Monsibais
 >2. For sequences <= 100 kb:<br>
 `bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.lte.fa.gz | sort  -k1,1rn > dmelr6.lte.txt`
 
-## Text Files were downloaded and process in an R script:
+### Text Files were downloaded and process in an R script:
 
-## Rscript
+### Rscript
 
 >```
 >#Histograms for HW#4 - Bioinformatics 
@@ -90,8 +90,11 @@ Author: Alisha N. Monsibais
 >    col = "darkgreen")
 >```
 
-#1. Sequence length distribution (Histogram in log scale)
-#2. Sequence GC% distribution (Histogram)
+### Answers 
+
+**1. Sequence length distribution (Histogram in log scale)**
+![]'C:\Users\anmon\Desktop\1.1.jpg'
+**2. Sequence GC% distribution (Histogram)**
 
 
 
