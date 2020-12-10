@@ -93,7 +93,7 @@ Author: Alisha N. Monsibais
 ### Answers 
 
 **1. Sequence length distribution (Histogram in log scale)**
-![]'C:\Users\anmon\Desktop\1.1.jpg'
+![image]'C:\Users\anmon\Desktop\1.1.jpg'
 **2. Sequence GC% distribution (Histogram)**
 
 
