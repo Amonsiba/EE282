@@ -81,7 +81,15 @@ faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
 
 #2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot
 
-#3. Calculate BUSCO score of both assemblies and compare them. 
+#3. Calculate BUSCO score of both assemblies and compare them.
+ 
+#BUSCO for code for Flybase genome assembly  
+busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
+#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
+
+#BUSCO code for Solarese fastq file genome assembly 
+busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
+#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
 
 #EC. Compare your assembly to the contig assembly from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer
 
