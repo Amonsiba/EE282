@@ -120,11 +120,9 @@ Author: Alisha N. Monsibais
 ## Part II: Genome assembly 
 
 ### Assemble a genome form MinION READS
-```
->#!/usr/bin/env bash
->#Assemble a genome from MinION reads 
->
->#1. Download reads 
+1.Download Reads: 
+``` 
+> 
 >#downloads data on ~/ directory 
 >wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
 >#unzip file for processing 
@@ -134,15 +132,12 @@ Author: Alisha N. Monsibais
 >srun -c 32 -A ecoevo282 --pty --x11 bash -i
 >
 >conda activate ee282
-># This is a bash function. It works very similarly to a bash script.
-># The arguments are stored in $1, $2, $3, etc.
+>#Bash function - which uses bioawk, -c fastx notifies the program about the input type (fasta)
 >n50 () {
 >  bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
 >  | sort -rn \
 >  | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
 >}
->#This function uses bioawk, -c fastx notifies the program the input file is in fasta format. 
->#Explain n50 from wiki
 >
 >#Establishes the place and  names of directories of the project 
 >basedir=~/   
