@@ -8,7 +8,7 @@
 #downloads data on ~/ directory 
 wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
 #unzip file for processing 
-gunzip iso1_onp_a2_1kb.fastg.gz
+gunzip iso1_onp_a2_1kb.fastq.gz
 
 #Required srun that is needed in order to have enough computing power to process code
 srun -c 32 -A ecoevo282 --pty --x11 bash -i
@@ -80,9 +80,47 @@ faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
 #3 contigs. 
 
 #2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot
+conda activate ee282
+#create directory
+createProject fifos ~/classrepos3
+#Copies my assembly to the fifos file 
+cp unitigs.fa ~/classrepos3/fifos
+#gets into the right director 
+cd ~/classrepos3/fifos
+
+#Get the file for D. melanogaster for the contig assembly and scaffold assembly 
+r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
+#makes files 
+mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
+
+#Gets and process the fly base genome 
+wget -O - -q $r6url \
+| tee >( \
+  bioawk -c fastx ' { print length($seq) } ' \
+  | sort -rn \
+  | awk ' BEGIN { print "Assembly\tLength\nFB_Scaff\t0" } { print "FB_Scaff\t" $1 } ' \
+  > tmp/r6scaff_fifo & ) \
+| faSplitByN /dev/stdin /dev/stdout 10 \
+| bioawk -c fastx ' { print length($seq) } ' \
+| sort -rn \
+| awk ' BEGIN { print "Assembly\tLength\nFB_Ctg\t0" } { print "FB_Ctg\t" $1 } ' \
+> tmp/r6ctg_fifo &
+
+#Gets and processes my assembly
+less unitigs.fa \
+| bioawk -c fastx ' { print length($seq) } ' \
+| sort -rn \
+| awk ' BEGIN { print "Assembly\tLength\nmySeq_Ctg\t0" } { print "mySeq_Ctg\t" $1 } ' \
+> tmp/myseq_fifo &
+
+#Makes the plot on the same graph 
+plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
+| tee r6_v_myseq.png \
+| display 
+
+rm tmp/{r6scaff,r6ctg,myseq}_fifo
 
 #3. Calculate BUSCO score of both assemblies and compare them.
- 
 #BUSCO for code for Flybase genome assembly  
 busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
 #Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
@@ -91,21 +129,22 @@ busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco
 busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
 #Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
 
+
+
+
+
+
+
+
+
+
 #EC. Compare your assembly to the contig assembly from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer
-
-
-
-
-
-
-
 ###Random Code
 #Assembly assessment
 #1. Calculate the N50 of your asssemply and compare it to the Drosophilia community reference's contig N50
 #Code for sequence n>100kb
 gawk '{tot=tot+$1; print $1 "\t" tot} END {print tot}' dmelr6.gt.txt | sort -k1,1rn | gawk 'NR==1 {tot=$1} NR>1 && $2/tot >= 0.5 {print $0 "\t" $2/tot}' | column -t | head -1
 #Code for sequence n<=100kb
-
 gawk '{tot=tot+$1; print $1 "\t" tot} END {print tot}' dmelr6.lte.txt | sort -k1,1rn | gawk 'NR==1 {tot=$1} NR>1 && $2/tot >= 0.5 {print $0 "\t" $2/tot}' | column -t | head -1
 
 ##This code is for the whole sequence. Nee to seperate n>100kb n<=100kb
