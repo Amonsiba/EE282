@@ -122,36 +122,36 @@ Author: Alisha N. Monsibais
 ### Assemble a genome form MinION READS
 1.Download Reads: 
 ``` 
-> 
->#downloads data on ~/ directory 
->wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
->#unzip file for processing 
->gunzip iso1_onp_a2_1kb.fastq.gz
->
->#Required srun that is needed in order to have enough computing power to process code
->srun -c 32 -A ecoevo282 --pty --x11 bash -i
->
->conda activate ee282
->#Bash function - which uses bioawk, -c fastx notifies the program about the input type (fasta)
->n50 () {
->  bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
->  | sort -rn \
->  | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
->}
->
->#Establishes the place and  names of directories of the project 
->basedir=~/   
->projname=nanopore_assembly
->basedir=$basedir/$projname
->raw=$basedir/$projname/data/raw
->processed=$basedir/$projname/data/processed
->figures=$basedir/$projname/output/figures
->reports=$basedir/$projname/output/reports
->
->#Create the Project name and pulls the data from my directory
->createProject $projname $basedir
->#links data to my directory - copies the link 
->ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq
+ 
+#downloads data on ~/ directory 
+wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
+#unzip file for processing 
+gunzip iso1_onp_a2_1kb.fastq.gz
+
+#Required srun that is needed in order to have enough computing power to process code
+srun -c 32 -A ecoevo282 --pty --x11 bash -i
+
+conda activate ee282
+#Bash function - which uses bioawk, -c fastx notifies the program about the input type (fasta)
+n50 () {
+  bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
+  | sort -rn \
+  | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
+}
+
+#Establishes the place and  names of directories of the project 
+basedir=~/   
+projname=nanopore_assembly
+basedir=$basedir/$projname
+raw=$basedir/$projname/data/raw
+processed=$basedir/$projname/data/processed
+figures=$basedir/$projname/output/figures
+reports=$basedir/$projname/output/reports
+
+#Create the Project name and pulls the data from my directory
+createProject $projname $basedir
+#links data to my directory - copies the link 
+ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq
 ```
 #2. Use minimap to overlap reads 
 #32 represents the number of threads
