@@ -6,17 +6,17 @@ Author: Alisha N. Monsibais
 
 ### Calculate the following for all sequences <= 100kb and all sequences >100kb:
 
->Downloading file from the internet - chromosome file in fasta format 
->`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz`
->Check File Integrity - downloads checksum file 
->`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt` 
+>Downloading file from the internet - chromosome file in fasta format\ 
+>`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz`\
+>Check File Integrity - downloads checksum file \
+>`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt`\ 
 >`md5sum --check <(grep dmel-all-chromosome-r6.36.fasta.gz md5sum.txt)` 
 
 >Code for making the files for specific length of the sequence
->1. For sequences >100 kb:
+>1. For sequences >100 kb:\
 >`bioawk -c fastx 'length($seq) > 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.gt.fa.gz`
 >
->2. For sequences <=100 kb:
+>2. For sequences <=100 kb:\
 >`bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.lte.fa.gz`
 
 
