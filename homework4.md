@@ -75,19 +75,19 @@ Author: Alisha N. Monsibais
 >`    `xlab ="Seq. Length (Log)",` <br>
 >`    `border = "blue",` <br>
 >`    `col = "darkgreen")`<br>
->
->`#Histograms for GC Percentage`<br>
->`hist(dmelr6.lte$GC.Percent,`<br>
->    `main = "Histogram of GC Percentage for Seq <=100kb",`<br> 
->    `xlab ="Percent Distribution",` <br>
->    `border = "purple",` <br>
->    `col = "darkred")`<br>
->`hist(dmelr6.gt$GC.Percent,`<br>
->    `main = "Histogram of GC Percentage for Seq >100kb",`<br> 
->    `xlab ="Percent Distribution",` <br>
->    `border = "blue",` <br>
->    `col = "darkgreen")`<br>
-
+>```
+>#Histograms for GC Percentage<br>
+>hist(dmelr6.lte$GC.Percent,<br>
+>    main = "Histogram of GC Percentage for Seq <=100kb",<br> 
+>    xlab ="Percent Distribution",<br>
+>    border = "purple",<br>
+>    col = "darkred")<br>
+>hist(dmelr6.gt$GC.Percent,<br>
+>    main = "Histogram of GC Percentage for Seq >100kb",<br> 
+>    xlab ="Percent Distribution",<br>
+>    border = "blue",<br>
+>    col = "darkgreen")<br>
+>```
 
 #1. Sequence length distribution (Histogram in log scale)
 #2. Sequence GC% distribution (Histogram)
