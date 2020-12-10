@@ -20,22 +20,22 @@ Author: Alisha N. Monsibais
 >`bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.lte.fa.gz`
 
 
-#Identifying Nucleotide, Ns and sequences
-#For the sequence >100 kb: 
-faSize dmelr6.gt.fa.gz
-#For the sequence <=100 kb:
-faSize dmelr6.lte.fa.gz
+>Code for Identifying Nucleotide, Ns and sequences
+>1. For the sequence >100 kb: 
+>`faSize dmelr6.gt.fa.gz`
+>2. For the sequence <=100 kb:
+>`faSize dmelr6.lte.fa.gz`
 
-#Answers
-#For the sequences >100 kb
-#1. Total number of nucleotides		137057575
-#2. Total number of Ns 			490385
-#3. Total number of sequences		7
+#### Answers
+1. ** For the sequences >100 kb**
+- Total number of nucleotides		137057575
+- Total number of Ns 			490385
+- Total number of sequences		7
 
-#For the sequences <=100 kb
-#1. Total number of nucleotides 	5515449
-#2. Total number of Ns			662593
-#3. Total number of sequences		1863
+**2. For the sequences <=100 kb**
+- Total number of nucleotides 	5515449
+- Total number of Ns			662593
+- Total number of sequences		1863
 
 ### Plots of the following for all sequences </= 100kb and all sequences >100kb:
 
