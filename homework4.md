@@ -11,23 +11,23 @@ Author: Alisha N. Monsibais
 >Check File Integrity - downloads checksum file <br>
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt`<br> 
 >`md5sum --check <(grep dmel-all-chromosome-r6.36.fasta.gz md5sum.txt)` 
-
+>
 >Code for making the files for specific length of the sequence
 >1. For sequences >100 kb:<br>
 >`bioawk -c fastx 'length($seq) > 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.gt.fa.gz`
 >
 >2. For sequences <=100 kb:<br>
 >`bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.lte.fa.gz`
-
-
+>
+>
 >Code for Identifying Nucleotide, Ns and sequences
->1. For the sequence >100 kb: 
+>1. For the sequence >100 kb:<br> 
 >`faSize dmelr6.gt.fa.gz`
->2. For the sequence <=100 kb:
+>2. For the sequence <=100 kb:<br>
 >`faSize dmelr6.lte.fa.gz`
 
-#### Answers
-1. ** For the sequences >100 kb**
+### Answers
+**1.  For the sequences >100 kb**
 - Total number of nucleotides		137057575
 - Total number of Ns 			490385
 - Total number of sequences		7
@@ -39,18 +39,13 @@ Author: Alisha N. Monsibais
 
 ### Plots of the following for all sequences </= 100kb and all sequences >100kb:
 
-#Plots of the following for all sequences =/< 100 kb and all sequences >100 kb:
+>Code for making the file for sequence name, sequence length and sequence GC(%)
+>1. For sequence > 100 kb: <br>
+>`bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.gt.fa.gz | sort  -k1,1rn > dmelr6.gt.txt`
+>2. For sequences <= 100 kb:<br>
+`bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.lte.fa.gz | sort  -k1,1rn > dmelr6.lte.txt`
 
-#Code
-
-#Makes the file for Sequence name, sequence length and sequence GC(%)
-#For sequence > 100 kb
-bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.gt.fa.gz | sort  -k1,1rn > dmelr6.gt.txt
-
-#For sequences <= 100 kb:
-bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.lte.fa.gz | sort  -k1,1rn > dmelr6.lte.txt
-
-#Answers
+### Answers
 #Text Files were downloaded and process in an R script for the following questions:
 #1. Sequence length distribution (Histogram in log scale)
 #2. Sequence GC% distribution (Histogram) 
