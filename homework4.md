@@ -94,8 +94,7 @@ Author: Alisha N. Monsibais
 
 **1. Sequence length distribution (Histogram in log scale)**
 ![image](http://i.ibb.co/0XQJJRs/1-1.jpg)
-
-
+![image](https://ibb.co/Bs8xDNL)
 **2. Sequence GC% distribution (Histogram)**
 
 
