@@ -120,14 +120,17 @@ Author: Alisha N. Monsibais
 ## Part II: Genome assembly 
 
 ### Assemble a genome form MinION READS
-1.Download Reads: 
+**1.Download Reads:** 
 ``` 
  
 #downloads data on ~/ directory 
 wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
 #unzip file for processing 
 gunzip iso1_onp_a2_1kb.fastq.gz
+```
 
+**2. Use `minimap` to overlay reads**
+```
 #Required srun that is needed in order to have enough computing power to process code
 srun -c 32 -A ecoevo282 --pty --x11 bash -i
 
@@ -152,14 +155,16 @@ reports=$basedir/$projname/output/reports
 createProject $projname $basedir
 #links data to my directory - copies the link 
 ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq
-```
-#2. Use minimap to overlap reads 
+
 #32 represents the number of threads
 #(-Sw5 -L100 -m0) is the best setting for ONT designed from the program
 #{,} is used to copy the sequence as referance against itself  
 minimap -t 32 -Sw5 -L100 -m0 $raw/reads.fq{,} \
 | gzip -1 \   #zips file
 > $processed/onp.paf.gz #output file 
+```
+
+
 
 #3. Use miniasm to construct an assemply
 #Specifies the reads and mapping file
