@@ -120,7 +120,7 @@ Author: Alisha N. Monsibais
 ## Part II: Genome assembly 
 
 ### Assemble a genome form MinION READS
-**1.Download Reads:** 
+**1. Download Reads:** 
 ``` 
  
 #downloads data on ~/ directory 
@@ -163,14 +163,19 @@ minimap -t 32 -Sw5 -L100 -m0 $raw/reads.fq{,} \
 | gzip -1 \   #zips file
 > $processed/onp.paf.gz #output file 
 ```
-
-
-
-#3. Use miniasm to construct an assemply
+**3. Use miniasm to construct an assemply**
+```
 #Specifies the reads and mapping file
 miniasm -f $raw/reads.fq $processed/onp.paf.gz \
 > $processed/reads.gfa #outputs file in particular location -Sw5 -L100 -m0 
+```
 
+### Assembly Assessment 
+**Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**
+
+_Continued Code from previous section_
+
+```
 #Selects every line that starts with an S at the begining of the line then print
 #the starting character (>)  with the name of the sequence 
 #followed by a new line and the sequence itself
@@ -180,13 +185,7 @@ awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
 #redirect to reports/n50.txt 
 | fold -w 60 \ #cuts characters by 60 within each line 
 > $processed/unitigs.fa
-#Output file is unitigs.fa which is in fasta file and cut into 60 characters
-
-
-### Assembly Assessment 
-
-
-#1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50 
+#Output file is unitigs.fa which is in fasta file and cut into 60 characters 
 #To see the N50 of my assembled sequence 
 less $reports/n50.txt
 #n50 - 4,494,246 
@@ -201,8 +200,10 @@ faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
 #Comparison - My assembly compared to the community assembly indicates that my assembly had smaller contig in length, thus 50% of the genome is represents 
 #by the 8 contigs that make up the N50 of the genome at sequence 4,494,246 while the Community Reference's had a Contig N50 at 21,485,538 which represents
 #3 contigs. 
+```
 
-#2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot
+**2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
+```
 conda activate ee282
 #create directory
 createProject fifos ~/classrepos3
@@ -242,12 +243,15 @@ plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
 | display 
 
 rm tmp/{r6scaff,r6ctg,myseq}_fifo
+```
 
-#3. Calculate BUSCO score of both assemblies and compare them.
+**3. Calculate BUSCO score of both assemblies and compare them.**
+```
 #BUSCO for code for Flybase genome assembly  
 busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
 #Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
 
 #BUSCO code for Solarese fastq file genome assembly 
 busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
-#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285 
+#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
+``` 
