@@ -195,7 +195,7 @@ _Text Files were downloaded and process in an R script:_
 >and the sequence itself. After, the pipe and tee function splits the results
 >into a the n50 function and produces a file (n50.txt) and also pushes the data to the next pipe.
 >The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code is outputed to
->the processing file and is saved as uitigs.fa (in fasta format)
+>the processing file and is saved as unitigs.fa (in fasta format).
 >```
 >awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
 >| tee >(n50 /dev/stdin > $reports/n50.txt) \
@@ -205,8 +205,8 @@ _Text Files were downloaded and process in an R script:_
 
 
 ### Assembly Assessment 
-**1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**
-Drosophila community reference's contig N50[N50](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4)
+**1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**<br>
+Drosophila community reference's contig [N50](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4)
 
 _Code use output file from previous section_
 
@@ -214,44 +214,40 @@ _Code use output file from previous section_
 >To view the N50 of my assembled sequence <br>
 >`less $reports/n50.txt`
 >
->To see the L50 of my assembled sequence/more information. 
+>To see the L50 of my assembled sequence. 
 >The function faSize is used, the file is then sorted by the second 
 >column in reverse numeric and outputed to the screen <br>
 >`faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less`
 
-***Answer***
+**Answer**_
  
-1. Community Reference's Information 
+**1. Community Reference's Information** 
 - N50  21,485,538
 - L50  3
-2.  My Assembly's Inforation 
+**2.  My Assembly's Inforation** 
 - N50  4,494,246
 - L50  8
 
-Comparison - My assembly compared to the community assembly indicates that my assembly had smaller contig in length, thus 50% of the genome is represents by the 8 contigs that make up the N50 of the genome at sequence 4,494,246 while the Community Reference's had a Contig N50 at 21,485,538 which represents 3 contigs. 
+My assembly compared to the community assembly indicates that overall my assembly had smaller contigs in length.
+This means that 50% of the genome in my assembly is represented by the 8 contigs, while the community assembly is 
+represented by 3 contigs. This indicates the the references assembly has a higher quality. 
 
 **2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
 
->Activates environment 
->```
->conda activate ee282
->```
->Create directory
->```
->createProject fifos ~/classrepos3
->```
->Copies my assembly to the fifos file 
->```
->cp unitigs.fa ~/classrepos3/fifos
->```
->Gets into the right director 
->```
->cd ~/classrepos3/fifos
->```
->Used to get the file for D. melanogaster for the contig assembly and scaffold assembly 
->```
->r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
->```
+>Activates environment <br> 
+>`conda activate ee282`<br>
+>
+>Create directory <br>
+>`createProject fifos ~/classrepos3` <br>
+>
+>Copies my assembly to the fifos file <br> 
+>`cp unitigs.fa ~/classrepos3/fifos`
+>
+>Gets into the right director <br> 
+>`cd ~/classrepos3/fifos`<br>
+>
+>Used in downstream code to obtain the file for D. melanogaster for the contig assembly and scaffold assembly<br> 
+>`r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"` <br>
 >Makes 3 files in the tmp folder 
 >```
 >mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
