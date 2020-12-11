@@ -190,38 +190,34 @@ _Text Files were downloaded and process in an R script:_
 >miniasm -f $raw/reads.fq $processed/onp.paf.gz \
 > $processed/reads.gfa  
 >```
+>This awk code selects every line that starts with an S then prints the starting character (>)
+>with the name of the sequence. This is then followed by a new line
+>and the sequence itself. After, the pipe and tee function splits the results
+>into a the n50 function and produces a file (n50.txt) and also pushes the data to the next pipe.
+>The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code is outputed to
+>the processing file and is saved as uitigs.fa (in fasta format)
+>```
+>awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
+>| tee >(n50 /dev/stdin > $reports/n50.txt) \
+>| fold -w 60 \
+>> $processed/unitigs.fa
+>```
+
 
 ### Assembly Assessment 
 **1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**
+Drosophila community reference's contig N50[N50](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4)
 
-_Continued Code from previous section_
+_Code use output file from previous section_
 
->This awk code selects every line that starts with an S then prints the starting character (>) 
->with the name of the sequence. This is then followed by a new line
->and the sequence itself. After, the pipe and tee function splits the results
->into a the n50 function and produces a file (n50.txt) and pushes the data to the next pipe. 
->The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code is output to 
->the processing file and is saved as uitigs.fa (in fasta format)
->
->```
->awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
->| tee >(n50 /dev/stdin > $reports/n50.txt) \ 
->| fold -w 60 \ 
->> $processed/unitigs.fa
->```
 > 
->To view the N50 of my assembled sequence
-> 
->```
->less $reports/n50.txt
->```
+>To view the N50 of my assembled sequence <br>
+>`less $reports/n50.txt`
 >
 >To see the L50 of my assembled sequence/more information. 
 >The function faSize is used, the file is then sorted by the second 
->column in reverse numeric and outputed to the screen 
->```
->faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
->```
+>column in reverse numeric and outputed to the screen <br>
+>`faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less`
 
 ***Answer***
  
