@@ -187,27 +187,27 @@ Author: Alisha N. Monsibais
 
 _Continued Code from previous section_
 
-This awk code selects every line that starts with an S at the begining of the line then print
-the starting character (>) with the name of the sequence. This is then followed by a new line
-and the sequence itself. After, the pipe and tee function splits the results
-into a the n50 function and produces a file (n50.txt) and also continues the data to the next pipe. 
-The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code output to 
-the processing file and save it as uitigs.fa (in fasta format)
-
+>This awk code selects every line that starts with an S at the begining of the line then print
+>the starting character (>) with the name of the sequence. This is then followed by a new line
+>and the sequence itself. After, the pipe and tee function splits the results
+>into a the n50 function and produces a file (n50.txt) and also continues the data to the next pipe. 
+>The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code output to 
+>the processing file and save it as uitigs.fa (in fasta format)
+>
 >```
 >awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
 >| tee >(n50 /dev/stdin > $reports/n50.txt) \ 
 >| fold -w 60 \ 
 >> $processed/unitigs.fa
 >```
- 
-To view the N50 of my assembled sequence
- 
+> 
+>To view the N50 of my assembled sequence
+> 
 >```
 >less $reports/n50.txt
 >```
-
-To see the L50 of my assembled sequence/more information 
+>
+>To see the L50 of my assembled sequence/more information 
 >```
 >faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
 >```
@@ -225,21 +225,32 @@ Comparison - My assembly compared to the community assembly indicates that my as
 
 **2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
 
+>Activates environment 
 >```
 >conda activate ee282
->#create directory
+>```
+>Create directory
+>```
 >createProject fifos ~/classrepos3
->#Copies my assembly to the fifos file 
+>```
+>Copies my assembly to the fifos file 
+>```
 >cp unitigs.fa ~/classrepos3/fifos
->#gets into the right director 
+>```
+>Gets into the right director 
+>```
 >cd ~/classrepos3/fifos
->
->#Get the file for D. melanogaster for the contig assembly and scaffold assembly 
+>```
+>Get the file for D. melanogaster for the contig assembly and scaffold assembly 
+>```
 >r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
->#makes files 
+>``
+>Makes 3 files in teh tmp folder 
+>```
 >mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
->
->#Gets and process the fly base genome 
+>```
+>Gets and process the fly base genome 
+>```
 >wget -O - -q $r6url \
 >| tee >( \
 >  bioawk -c fastx ' { print length($seq) } ' \
@@ -251,19 +262,25 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >| sort -rn \
 >| awk ' BEGIN { print "Assembly\tLength\nFB_Ctg\t0" } { print "FB_Ctg\t" $1 } ' \
 >> tmp/r6ctg_fifo &
+>```
 >
->#Gets and processes my assembly
+>Gets and processes my assembly
+>```
 >less unitigs.fa \
 >| bioawk -c fastx ' { print length($seq) } ' \
 >| sort -rn \
 >| awk ' BEGIN { print "Assembly\tLength\nmySeq_Ctg\t0" } { print "mySeq_Ctg\t" $1 } ' \
 >> tmp/myseq_fifo &
+>```
 >
->#Makes the plot on the same graph 
+>Makes the plot on the same graph 
+>```
 >plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
 >| tee r6_v_myseq.png \
 >| display 
->
+>```
+>Removed files
+>```
 >rm tmp/{r6scaff,r6ctg,myseq}_fifo
 >```
 
