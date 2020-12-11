@@ -166,7 +166,7 @@ Author: Alisha N. Monsibais
 > $processed/onp.paf.gz #output file 
 >```
 
-**3. Use miniasm to construct an assemply**
+**3. Use `miniasm` to construct an assemply**
 ```
 #Specifies the reads and mapping file
 miniasm -f $raw/reads.fq $processed/onp.paf.gz \
@@ -174,31 +174,34 @@ miniasm -f $raw/reads.fq $processed/onp.paf.gz \
 ```
 
 ### Assembly Assessment 
-**Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**
+**1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**
 
 _Continued Code from previous section_
 
-```
-#Selects every line that starts with an S at the begining of the line then print
-#the starting character (>)  with the name of the sequence 
-#followed by a new line and the sequence itself
-awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
-| tee >(n50 /dev/stdin > $reports/n50.txt) \ #tee splits the result
-#pipes it into the n50 function and to read from standard input
-#redirect to reports/n50.txt 
-| fold -w 60 \ #cuts characters by 60 within each line 
-> $processed/unitigs.fa
-#Output file is unitigs.fa which is in fasta file and cut into 60 characters 
-#To see the N50 of my assembled sequence 
-less $reports/n50.txt
-#n50 - 4,494,246 
-#To see the L50 of my assembled sequence/more information 
-faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
-#L50 - 8 
-
-#Community Reference's information 
-#Contig N50 - 21,485,538
-#Contig L50 - 3
+>```
+>#Selects every line that starts with an S at the begining of the line then print
+>#the starting character (>)  with the name of the sequence 
+>#followed by a new line and the sequence itself
+>awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
+>| tee >(n50 /dev/stdin > $reports/n50.txt) \ #tee splits the result
+>#pipes it into the n50 function and to read from standard input
+>#redirect to reports/n50.txt 
+>| fold -w 60 \ #cuts characters by 60 within each line 
+>> $processed/unitigs.fa
+>#Output file is unitigs.fa which is in fasta file and cut into 60 characters 
+>#To see the N50 of my assembled sequence 
+>less $reports/n50.txt
+>#n50 - 4,494,246 
+>#To see the L50 of my assembled sequence/more information 
+>faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
+>#L50 - 8 
+>```
+***Answer***
+ 
+- Community Reference's Information 
+-- Contig N50 - 21,485,538
+-- Contig L50 - 3
+- My Assembly's Inforation 
 
 #Comparison - My assembly compared to the community assembly indicates that my assembly had smaller contig in length, thus 50% of the genome is represents 
 #by the 8 contigs that make up the N50 of the genome at sequence 4,494,246 while the Community Reference's had a Contig N50 at 21,485,538 which represents
