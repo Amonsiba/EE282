@@ -206,67 +206,65 @@ To see the L50 of my assembled sequence/more information
 ***Answer***
  
 - Community Reference's Information 
--- N50 - 21,485,538
--- L50 - 3
-- My Assembly's Inforation 
--- N50 - 4,494,246
--- L50 - 8
+1. N50  21,485,538
+- L50  3
+2.  My Assembly's Inforation 
+- N50  4,494,246
+- L50  8
 
-#Comparison - My assembly compared to the community assembly indicates that my assembly had smaller contig in length, thus 50% of the genome is represents 
-#by the 8 contigs that make up the N50 of the genome at sequence 4,494,246 while the Community Reference's had a Contig N50 at 21,485,538 which represents
-#3 contigs. 
-```
+Comparison - My assembly compared to the community assembly indicates that my assembly had smaller contig in length, thus 50% of the genome is represents by the 8 contigs that make up the N50 of the genome at sequence 4,494,246 while the Community Reference's had a Contig N50 at 21,485,538 which represents 3 contigs. 
 
 **2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
-```
-conda activate ee282
-#create directory
-createProject fifos ~/classrepos3
-#Copies my assembly to the fifos file 
-cp unitigs.fa ~/classrepos3/fifos
-#gets into the right director 
-cd ~/classrepos3/fifos
 
-#Get the file for D. melanogaster for the contig assembly and scaffold assembly 
-r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
-#makes files 
-mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
-
-#Gets and process the fly base genome 
-wget -O - -q $r6url \
-| tee >( \
-  bioawk -c fastx ' { print length($seq) } ' \
-  | sort -rn \
-  | awk ' BEGIN { print "Assembly\tLength\nFB_Scaff\t0" } { print "FB_Scaff\t" $1 } ' \
-  > tmp/r6scaff_fifo & ) \
-| faSplitByN /dev/stdin /dev/stdout 10 \
-| bioawk -c fastx ' { print length($seq) } ' \
-| sort -rn \
-| awk ' BEGIN { print "Assembly\tLength\nFB_Ctg\t0" } { print "FB_Ctg\t" $1 } ' \
-> tmp/r6ctg_fifo &
-
-#Gets and processes my assembly
-less unitigs.fa \
-| bioawk -c fastx ' { print length($seq) } ' \
-| sort -rn \
-| awk ' BEGIN { print "Assembly\tLength\nmySeq_Ctg\t0" } { print "mySeq_Ctg\t" $1 } ' \
-> tmp/myseq_fifo &
-
-#Makes the plot on the same graph 
-plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
-| tee r6_v_myseq.png \
-| display 
-
-rm tmp/{r6scaff,r6ctg,myseq}_fifo
-```
+>```
+>conda activate ee282
+>#create directory
+>createProject fifos ~/classrepos3
+>#Copies my assembly to the fifos file 
+>cp unitigs.fa ~/classrepos3/fifos
+>#gets into the right director 
+>cd ~/classrepos3/fifos
+>
+>#Get the file for D. melanogaster for the contig assembly and scaffold assembly 
+>r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
+>#makes files 
+>mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
+>
+>#Gets and process the fly base genome 
+>wget -O - -q $r6url \
+>| tee >( \
+>  bioawk -c fastx ' { print length($seq) } ' \
+>  | sort -rn \
+>  | awk ' BEGIN { print "Assembly\tLength\nFB_Scaff\t0" } { print "FB_Scaff\t" $1 } ' \
+>  > tmp/r6scaff_fifo & ) \
+>| faSplitByN /dev/stdin /dev/stdout 10 \
+>| bioawk -c fastx ' { print length($seq) } ' \
+>| sort -rn \
+>| awk ' BEGIN { print "Assembly\tLength\nFB_Ctg\t0" } { print "FB_Ctg\t" $1 } ' \
+>> tmp/r6ctg_fifo &
+>
+>#Gets and processes my assembly
+>less unitigs.fa \
+>| bioawk -c fastx ' { print length($seq) } ' \
+>| sort -rn \
+>| awk ' BEGIN { print "Assembly\tLength\nmySeq_Ctg\t0" } { print "mySeq_Ctg\t" $1 } ' \
+>> tmp/myseq_fifo &
+>
+>#Makes the plot on the same graph 
+>plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
+>| tee r6_v_myseq.png \
+>| display 
+>
+>rm tmp/{r6scaff,r6ctg,myseq}_fifo
+>```
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
-```
-#BUSCO for code for Flybase genome assembly  
-busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
-#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
-
-#BUSCO code for Solarese fastq file genome assembly 
-busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
-#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
-``` 
+>```
+>#BUSCO for code for Flybase genome assembly  
+>busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
+>#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
+>
+>#BUSCO code for Solarese fastq file genome assembly 
+>busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
+>#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
+>``` 
