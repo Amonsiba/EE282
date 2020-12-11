@@ -29,15 +29,15 @@ Author: Alisha N. Monsibais
 ### Answers
 **1.  For the sequences >100 kb**
  
- ⋅⋅Total number of nucleotides:		137057575
- ⋅⋅Total number of Ns 	:		490385
- ⋅⋅Total number of sequences:		7
+ ⋅⋅Total number of nucleotides		137057575
+ ⋅⋅Total number of Ns 		490385
+ ⋅⋅Total number of sequences		7
 
 **2. For the sequences <=100 kb**
  
- ⋅⋅Total number of nucleotides:	5515449
- ⋅⋅Total number of Ns	:		662593
- ⋅⋅Total number of sequences:		1863
+ ⋅⋅Total number of nucleotides	5515449
+ ⋅⋅Total number of Ns		662593
+ ⋅⋅Total number of sequences		1863
 
 ### Plots of the following for all sequences </= 100kb and all sequences >100kb:
 
