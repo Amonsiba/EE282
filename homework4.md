@@ -6,7 +6,7 @@ Author: Alisha N. Monsibais
 
 ### Calculate the following for all sequences <= 100kb and all sequences >100kb:
 
->Download file from the internet - file is in fasta format <br> 
+>Downloads file from the internet - file is in fasta format <br> 
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz` <br>
 >Check File Integrity - downloads checksum file and check the checksum using md5sum program <br>
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt`<br> 
@@ -18,7 +18,6 @@ Author: Alisha N. Monsibais
 >  
 >1. For sequences >100 kb:<br>
 >`bioawk -c fastx 'length($seq) > 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.gt.fa.gz`
->
 >2. For sequences <=100 kb:<br>
 >`bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.lte.fa.gz`
 >
