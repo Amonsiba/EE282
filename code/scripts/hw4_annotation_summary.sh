@@ -22,7 +22,7 @@ n50 () {
   | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
 }
 #This function uses bioawk, -c fastx notifies the program the input file is in fasta format. 
-#Explain n50 from wiki
+
 
 #Establishes the place and  names of directories of the project 
 basedir=~/   

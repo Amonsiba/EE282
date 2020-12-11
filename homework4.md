@@ -165,14 +165,14 @@ _Text Files were downloaded and process in an R script:_
 >```
 >
 >Create the Project name and pulls the data from my directory and links data
->to my directory 
+>to my directory <br>
 >`createProject $projname $basedir` <br>
 >`ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq`
 >
 >The program minimap overlaps the reads for the file reads.fq. Settings (-Sw5 -L100 -m0)
 >are used to set the best conditions for processing the code. The syntax {,} is used to create a copy
 >of the sequence so it can be referance against itself. The pipe then gzips the file and 
->designates out output file location and name.   
+>designates output file location and name.   
 >```
 >minimap -t 32 -Sw5 -L100 -m0 $raw/reads.fq{,} \
 >| gzip -1 \   
