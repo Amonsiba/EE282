@@ -127,15 +127,15 @@ _Text Files were downloaded and process in an R script:_
 ### Assemble a genome form MinION READS
 **1. Download Reads:** 
  
->Downloads data on home directory 
->`wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz`
->Unzip file for further downstream processing 
->`gunzip iso1_onp_a2_1kb.fastq.gz`
+>Downloads data on home directory <br> 
+>`wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz`<br>
+>Unzip file for further downstream processing <br>
+>`gunzip iso1_onp_a2_1kb.fastq.gz`<br>
 
 **2. Use `minimap` to overlay reads**
 
 >Program minimap Requires srun 32. This provides enough computing power to process the code. 
->Additionally, conda activate activates the necessary environment. 
+>Additionally, conda activate activates the necessary environment. <br>
 >`srun -c 32 -A ecoevo282 --pty --x11 bash -i`<br>
 >`conda activate ee282`
 >
@@ -166,13 +166,11 @@ _Text Files were downloaded and process in an R script:_
 >
 >Create the Project name and pulls the data from my directory and links data
 >to my directory 
->```
->createProject $projname $basedir
->ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq
->```
+>`createProject $projname $basedir` <br>
+>`ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq`
 >
->The program minimap overlaps the reads for the reads.fq file. Settings (-Sw5 -L100 -m0)
->are used to set the best conditions for and the syntax {,} is used to create a copy
+>The program minimap overlaps the reads for the file reads.fq. Settings (-Sw5 -L100 -m0)
+>are used to set the best conditions for processing the code. The syntax {,} is used to create a copy
 >of the sequence so it can be referance against itself. The pipe then gzips the file and 
 >designates out output file location and name.   
 >```
@@ -185,10 +183,9 @@ _Text Files were downloaded and process in an R script:_
   
 **3. Use `miniasm` to construct an assemply**
 
->The program miniasm constructs the assembly by using the output from minimap by taking the
->all-vs-all read self-mapping. 
->
->Specifies the reads and mapping file, output file is a gfa (graphical fragment assembly) 
+>The program miniasm constructs the assembly by using the output from minimap, which takes the
+>all-vs-all read self-mapping. The code also specifies the reads and mapping file,
+>output file is a gfa (graphical fragment assembly). 
 >```
 >miniasm -f $raw/reads.fq $processed/onp.paf.gz \
 > $processed/reads.gfa  
