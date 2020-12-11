@@ -127,26 +127,25 @@ _Text Files were downloaded and process in an R script:_
 ### Assemble a genome form MinION READS
 **1. Download Reads:** 
  
->Downloads data on ~/ directory 
->```
->wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
->```
->Unzip file for processing 
->```
->gunzip iso1_onp_a2_1kb.fastq.gz
->```
+>Downloads data on home directory 
+>`wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz`
+>Unzip file for further downstream processing 
+>`gunzip iso1_onp_a2_1kb.fastq.gz`
 
 **2. Use `minimap` to overlay reads**
 
->Requires srun 32. This provides enough computing power to process the code. 
+>Program minimap Requires srun 32. This provides enough computing power to process the code. 
 >Additionally, conda activate activates the necessary environment. 
->```
->srun -c 32 -A ecoevo282 --pty --x11 bash -i
->conda activate ee282
->```
->Bash function - which uses bioawk to print the sequence, along the the accumulative sequcence. 
->The END portion prints the final sumed sequenced. The data is then piped into the sort function 
->which causes it to be sorted reverse numeric. The gawk function then finds the  
+>`srun -c 32 -A ecoevo282 --pty --x11 bash -i`<br>
+>`conda activate ee282`
+>
+>n50 is a Bash function that calculates the n50. This function provides the size of contig at
+>which 50% of the genome is present. This function uses bioawk with the input format in fasta file.
+>Bioawk then parses the data and prints the length of the sequence along with the length of the
+>accumulating amount of the total sequence. The END portion prints the final summed sequenced length.
+>The data is then piped into the sort function which then sorts the data reverse numeric. 
+>The gawk function then definds the % of genomes by length and prints the length at which 50% (or more) 
+>of the genome is reached.  
 >```
 >n50 () {
 >  bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \

@@ -39,7 +39,7 @@ faSize dmelr6.lte.fa.gz
 #3. Total number of sequences		1863
 
 
-#Plots of the following for all sequences =/< 100 kb and all sequences >100 kb:
+#Plots of the following for all sequences <= 100 kb and all sequences >100 kb:
 
 #Code
 
