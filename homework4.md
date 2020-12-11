@@ -244,7 +244,7 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >Get the file for D. melanogaster for the contig assembly and scaffold assembly 
 >```
 >r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
->``
+>```
 >Makes 3 files in teh tmp folder 
 >```
 >mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
