@@ -202,12 +202,12 @@ Author: Alisha N. Monsibais
 
 _Continued Code from previous section_
 
->This awk code selects every line that starts with an S at the begining of the line then print
->the starting character (>) with the name of the sequence. This is then followed by a new line
+>This awk code selects every line that starts with an S then prints the starting character (>) 
+>with the name of the sequence. This is then followed by a new line
 >and the sequence itself. After, the pipe and tee function splits the results
->into a the n50 function and produces a file (n50.txt) and also continues the data to the next pipe. 
->The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code output to 
->the processing file and save it as uitigs.fa (in fasta format)
+>into a the n50 function and produces a file (n50.txt) and pushes the data to the next pipe. 
+>The next pipe cut the characters at 60 and folds the sequence to the next line. Finally, the code is output to 
+>the processing file and is saved as uitigs.fa (in fasta format)
 >
 >```
 >awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
@@ -222,7 +222,9 @@ _Continued Code from previous section_
 >less $reports/n50.txt
 >```
 >
->To see the L50 of my assembled sequence/more information 
+>To see the L50 of my assembled sequence/more information. 
+>The function faSize is used, the file is then sorted by the second 
+>column in reverse numeric and outputed to the screen 
 >```
 >faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
 >```
@@ -256,11 +258,11 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >```
 >cd ~/classrepos3/fifos
 >```
->Get the file for D. melanogaster for the contig assembly and scaffold assembly 
+>Used to get the file for D. melanogaster for the contig assembly and scaffold assembly 
 >```
 >r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"
 >```
->Makes 3 files in teh tmp folder 
+>Makes 3 files in the tmp folder 
 >```
 >mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
 >```
@@ -298,6 +300,8 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >```
 >rm tmp/{r6scaff,r6ctg,myseq}_fifo
 >```
+Contiguity plot
+![image](https://i.ibb.co/VWqfTJz/contiguityplot1.png)
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
 >```
@@ -305,11 +309,11 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
 >#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
 >```
-![image](https://i.ibb.co/qJmXTRJ/busco.png)
+![image](https://i.ibb.co/QCPT2tR/busco.png)
 >```
 >#BUSCO code for Solarese fastq file genome assembly 
 >busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa \
 > -l diptera_odb10 -o dmel_busco_solarese -m genome
 >#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
 >```
-![image]()
+![image](https://i.ibb.co/Vxs89gJ/busco-sol.png)
