@@ -28,16 +28,16 @@ Author: Alisha N. Monsibais
 
 ### Answers
 **1.  For the sequences >100 kb**
- 
- ⋅⋅Total number of nucleotides		137057575
- ⋅⋅Total number of Ns 		490385
- ⋅⋅Total number of sequences		7
+
+ -Total number of nucleotides		137057575
+ -Total number of Ns 		490385
+ -Total number of sequences		7
 
 **2. For the sequences <=100 kb**
  
- ⋅⋅Total number of nucleotides	5515449
- ⋅⋅Total number of Ns		662593
- ⋅⋅Total number of sequences		1863
+ -Total number of nucleotides	5515449
+ -Total number of Ns		662593
+ -Total number of sequences		1863
 
 ### Plots of the following for all sequences </= 100kb and all sequences >100kb:
 
@@ -123,13 +123,13 @@ Author: Alisha N. Monsibais
 
 ### Assemble a genome form MinION READS
 **1. Download Reads:** 
-``` 
- 
-#downloads data on ~/ directory 
-wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
-#unzip file for processing 
-gunzip iso1_onp_a2_1kb.fastq.gz
-```
+>``` 
+> 
+>#downloads data on ~/ directory 
+>wget https://hpc.oit.uci.edu/~solarese/ee282/iso1_onp_a2_1kb.fastq.gz
+>#unzip file for processing 
+>gunzip iso1_onp_a2_1kb.fastq.gz
+>```
 
 **2. Use `minimap` to overlay reads**
 ```
