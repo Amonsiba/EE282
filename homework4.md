@@ -152,7 +152,7 @@ Author: Alisha N. Monsibais
 >processed=$basedir/$projname/data/processed
 >figures=$basedir/$projname/output/figures
 >reports=$basedir/$projname/output/reports
-
+>
 >#Create the Project name and pulls the data from my directory
 >createProject $projname $basedir
 >#links data to my directory - copies the link 
