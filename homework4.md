@@ -219,18 +219,18 @@ _Code use output file from previous section_
 >column in reverse numeric and outputed to the screen <br>
 >`faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less`
 
-**Answer**_
+**Answer**
  
 **1. Community Reference's Information** 
 - N50  21,485,538
-- L50  3
+- L50  3 <br>
 **2.  My Assembly's Inforation** 
 - N50  4,494,246
 - L50  8
 
 My assembly compared to the community assembly indicates that overall my assembly had smaller contigs in length.
 This means that 50% of the genome in my assembly is represented by the 8 contigs, while the community assembly is 
-represented by 3 contigs. This indicates the the references assembly has a higher quality. 
+represented by 3 contigs. This indicates the the references assembly is a higher quality. 
 
 **2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
 
@@ -248,11 +248,11 @@ represented by 3 contigs. This indicates the the references assembly has a highe
 >
 >Used in downstream code to obtain the file for D. melanogaster for the contig assembly and scaffold assembly<br> 
 >`r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"` <br>
+>
 >Makes 3 files in the tmp folder 
->```
->mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo
->```
->Gets and process the fly base genome 
+>`mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo`
+>
+>Obtains the fly base genome and processes the file in a first in first out approach to obtain the lengths of the sequence for scaffold and contig assembly.  
 >```
 >wget -O - -q $r6url \
 >| tee >( \
@@ -267,7 +267,7 @@ represented by 3 contigs. This indicates the the references assembly has a highe
 >> tmp/r6ctg_fifo &
 >```
 >
->Gets and processes my assembly
+>Obtains my assembly and processes it in a similar way to the previous code. 
 >```
 >less unitigs.fa \
 >| bioawk -c fastx ' { print length($seq) } ' \
@@ -276,7 +276,7 @@ represented by 3 contigs. This indicates the the references assembly has a highe
 >> tmp/myseq_fifo &
 >```
 >
->Makes the plot on the same graph 
+>Makes the plot on the same graph and displays it for viewing 
 >```
 >plotCDF2 tmp/{r6scaff,r6ctg,myseq}_fifo /dev/stdout \
 >| tee r6_v_myseq.png \
@@ -286,7 +286,7 @@ represented by 3 contigs. This indicates the the references assembly has a highe
 >```
 >rm tmp/{r6scaff,r6ctg,myseq}_fifo
 >```
-Contiguity plot
+Contiguity plot<br>
 ![image](https://i.ibb.co/VWqfTJz/contiguityplot1.png)
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
@@ -303,3 +303,7 @@ Contiguity plot
 >#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
 >```
 ![image](https://i.ibb.co/Vxs89gJ/busco-sol.png)
+
+Overall, the complete BUSCO score for the Flybase genome assembly was 99.5% indicating a high quality genome assembly. However, my assembly on the other hand had a complete BUSCO score of 0.2% indicating that my assembly was of very poor quality. 
+
+
