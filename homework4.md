@@ -292,14 +292,13 @@ Contiguity plot<br>
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
 >
->BUSCO code for Flybase genome assembly  
+>BUSCO code for Flybase genome assembly <br> 
 >`busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome`
 >
 ![image](https://i.ibb.co/QCPT2tR/busco.png)
 >
->BUSCO code for Solarese fastq file genome assembly 
->`busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa \
-> -l diptera_odb10 -o dmel_busco_solarese -m genome`
+>BUSCO code for Solarese fastq file genome assembly <br>
+>`busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome`
 >
 ![image](https://i.ibb.co/Vxs89gJ/busco-sol.png)
 
