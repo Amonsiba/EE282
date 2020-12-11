@@ -41,7 +41,7 @@ Author: Alisha N. Monsibais
  - Total number of Ns		662593
  - Total number of sequences		1863
 
-### Plots of the following for all sequences </= 100kb and all sequences >100kb:
+### Plots of the following for all sequences <= 100kb and all sequences >100kb:
 
 >This code is for making files for sequence length and sequence GC(%) of the previously analyzed files. 
 >The program bioawk is using fasta format which prints the length of the sequence followed by a tab
@@ -109,10 +109,9 @@ Author: Alisha N. Monsibais
 
 **3. Cumulative sequence size sorted from the larges to smallest sequences**
 
->To get the cumulative sequence size plot<br>
->The file is cut for everything but field 1 which is processed into 
->standard out and piped into display to be viewed. 
-
+>To obtain the cumulative sequence size plot the files were cut for everything but field 1
+>which was processed into standard out and piped into display to be viewed. 
+>
 >For the sequences >100 kb:<br>
 >`plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display`
 
