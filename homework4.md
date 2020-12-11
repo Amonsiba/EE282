@@ -6,13 +6,16 @@ Author: Alisha N. Monsibais
 
 ### Calculate the following for all sequences <= 100kb and all sequences >100kb:
 
->Downloading file from the internet - chromosome file in fasta format <br> 
+>Download file from the internet - file is in fasta format <br> 
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz` <br>
->Check File Integrity - downloads checksum file <br>
+>Check File Integrity - downloads checksum file and check the checksum using md5sum program <br>
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt`<br> 
 >`md5sum --check <(grep dmel-all-chromosome-r6.36.fasta.gz md5sum.txt)` 
 >
->Code for making the files for specific length of the sequence
+>The following code is for making specific lengths of sequences into two files. Bioawk is using fasta files
+>line by line and pulls all the >100kb sequences (upper code) or <=100kb sequences (lower code), and outputs 
+>them to a gzip file which gets labeled. 
+>  
 >1. For sequences >100 kb:<br>
 >`bioawk -c fastx 'length($seq) > 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.gt.fa.gz`
 >
@@ -20,7 +23,7 @@ Author: Alisha N. Monsibais
 >`bioawk -c fastx 'length($seq) <= 100000{ print ">"$name; print $seq }'  dmel-all-chromosome-r6.36.fasta.gz | gzip -c > dmelr6.lte.fa.gz`
 >
 >
->Code for Identifying Nucleotide, Ns and sequences
+>Code for Identifying Nucleotide, Ns and sequences with the program faSize
 >1. For the sequence >100 kb:<br> 
 >`faSize dmelr6.gt.fa.gz`
 >2. For the sequence <=100 kb:<br>
