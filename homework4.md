@@ -41,18 +41,18 @@ Author: Alisha N. Monsibais
  - Total number of Ns		662593
  - Total number of sequences		1863
 
-### Plots of the following for all sequences <= 100kb and all sequences >100kb:
+### Plots of the following for all sequences <=100kb and all sequences >100kb:
 
 >This code is for making files for sequence length and sequence GC(%) of the previously analyzed files. 
 >The program bioawk is using fasta format which prints the length of the sequence followed by a tab
 >and then the GC% of the sequence. This is then piped into sort to sort the first column reverse 
 >numeric and is put into an output file. 
->1. For sequence > 100 kb: <br>
+>1. For sequence >100 kb: <br>
 >`bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.gt.fa.gz | sort  -k1,1rn > dmelr6.gt.txt`
->2. For sequences <= 100 kb:<br>
+>2. For sequences <=100 kb:<br>
 `bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.lte.fa.gz | sort  -k1,1rn > dmelr6.lte.txt`
 
-### Text Files were downloaded and process in an R script:
+_Text Files were downloaded and process in an R script:_
 
 ### Rscript
 
