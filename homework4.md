@@ -205,8 +205,8 @@ To see the L50 of my assembled sequence/more information
 
 ***Answer***
  
-- Community Reference's Information 
-1. N50  21,485,538
+1. Community Reference's Information 
+- N50  21,485,538
 - L50  3
 2.  My Assembly's Inforation 
 - N50  4,494,246
@@ -263,8 +263,12 @@ Comparison - My assembly compared to the community assembly indicates that my as
 >#BUSCO for code for Flybase genome assembly  
 >busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
 >#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
->
+>```
+![image](https://i.ibb.co/qJmXTRJ/busco.png)
+>```
 >#BUSCO code for Solarese fastq file genome assembly 
->busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
+>busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa \
+> -l diptera_odb10 -o dmel_busco_solarese -m genome
 >#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
->``` 
+>```
+![image]()
