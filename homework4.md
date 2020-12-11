@@ -44,7 +44,10 @@ Author: Alisha N. Monsibais
 
 ### Plots of the following for all sequences </= 100kb and all sequences >100kb:
 
->Code for making the file for sequence name, sequence length and sequence GC(%)
+>This code is for making files for sequence length and sequence GC(%) of the previously analyzed files. 
+>The program bioawk is using fasta format which prints the length of the sequence followed by a tab
+>and then the GC% of the sequence. This is then piped into sort to sort the first column reverse 
+>numeric and is put into an output file. 
 >1. For sequence > 100 kb: <br>
 >`bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmelr6.gt.fa.gz | sort  -k1,1rn > dmelr6.gt.txt`
 >2. For sequences <= 100 kb:<br>
@@ -72,8 +75,8 @@ Author: Alisha N. Monsibais
 >
 >#Histograms for Sequence Length
 >hist(dmelr6.lte$LogSL.lte,
->    main = "Distribution of Seq. Length for Seq <=100kb",
->    xlab ="Seq. Length (Log)",
+>    main = "Distribution of Seq. Length for Seq <=100kb", 
+>    xlab ="Seq. Length (Log)", 
 >    border = "purple",
 >    col = "darkred")
 >hist(dmelr6.gt$LogSL.gt,
@@ -108,16 +111,16 @@ Author: Alisha N. Monsibais
 **3. Cumulative sequence size sorted from the larges to smallest sequences**
 
 >To get the cumulative sequence size plot<br>
+>The file is cut for everything but field 1 which is processed into 
+>standard out and piped into display to be viewed. 
+
 >For the sequences >100 kb:<br>
 >`plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display`
 
-
 ![image](https://i.ibb.co/KFG5sL0/3-1.jpg)
  
->To get the cumulative sequence size plot <br>
 >For the sequence <=100 kb:<br>
 >`plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display`
-
 
 ![image](https://i.ibb.co/WpqNmHJ/3-2.png)
 
