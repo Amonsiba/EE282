@@ -124,7 +124,6 @@ Author: Alisha N. Monsibais
 
 ![image](https://i.ibb.co/WpqNmHJ/3-2.png)
 
-
 ## Part II: Genome assembly 
 
 ### Assemble a genome form MinION READS
@@ -141,13 +140,15 @@ Author: Alisha N. Monsibais
 
 **2. Use `minimap` to overlay reads**
 
->Requires srun 32 to have enough computing power to process code and put the terminal 
->in the correct environment 
+>Requires srun 32. This provides enough computing power to process the code. 
+>Additionally, conda activate activates the necessary environment. 
 >```
 >srun -c 32 -A ecoevo282 --pty --x11 bash -i
 >conda activate ee282
 >```
->Bash function - which uses bioawk, -c fastx notifies the program about the input type (fasta)
+>Bash function - which uses bioawk to print the sequence, along the the accumulative sequcence. 
+>The END portion prints the final sumed sequenced. The data is then piped into the sort function 
+>which causes it to be sorted reverse numeric. The gawk function then finds the  
 >```
 >n50 () {
 >  bioawk -c fastx ' { print length($seq); n=n+length($seq); } END { print n; } ' $1 \
@@ -155,7 +156,7 @@ Author: Alisha N. Monsibais
 >  | gawk ' NR == 1 { n = $1 }; NR > 1 { ni = $1 + ni; } ni/n > 0.5 { print $1; exit; } '
 >}
 >```
->Establishes the place and  names of directories of the project 
+>Establishes the place and names of directories of the project 
 >```
 >basedir=~/   
 >projname=nanopore_assembly
@@ -173,19 +174,27 @@ Author: Alisha N. Monsibais
 >ln -sf ~/iso1_onp_a2_1kb.fastq $raw/reads.fq
 >```
 >
->32 represents the number of threads (-Sw5 -L100 -m0) is the best setting for ONT designed from the program
->{,} is used to copy the sequence as referance against itself  
+>The program minimap overlaps the reads for the reads.fq file. Settings (-Sw5 -L100 -m0)
+>are used to set the best conditions for and the syntax {,} is used to create a copy
+>of the sequence so it can be referance against itself. The pipe then gzips the file and 
+>designates out output file location and name.   
 >```
 >minimap -t 32 -Sw5 -L100 -m0 $raw/reads.fq{,} \
->| gzip -1 \   #zips file
-> $processed/onp.paf.gz #output file 
+>| gzip -1 \   
+> $processed/onp.paf.gz  
 >```
+>
 
+  
 **3. Use `miniasm` to construct an assemply**
+
+>The program miniasm constructs the assembly by using the output from minimap by taking the
+>all-vs-all read self-mapping. 
+>
+>Specifies the reads and mapping file, output file is a gfa (graphical fragment assembly) 
 >```
->#Specifies the reads and mapping file
 >miniasm -f $raw/reads.fq $processed/onp.paf.gz \
-> $processed/reads.gfa #outputs file in particular location -Sw5 -L100 -m0 
+> $processed/reads.gfa  
 >```
 
 ### Assembly Assessment 
