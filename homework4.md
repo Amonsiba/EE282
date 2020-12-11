@@ -178,24 +178,32 @@ miniasm -f $raw/reads.fq $processed/onp.paf.gz \
 
 _Continued Code from previous section_
 
+`
+#Selects every line that starts with an S at the begining of the line then print
+#the starting character (>)  with the name of the sequence 
+#followed by a new line and the sequence itself
 >```
->#Selects every line that starts with an S at the begining of the line then print
->#the starting character (>)  with the name of the sequence 
->#followed by a new line and the sequence itself
 >awk ' $0 ~/^S/ { print ">" $2" \n" $3 } ' $processed/reads.gfa \
 >| tee >(n50 /dev/stdin > $reports/n50.txt) \ #tee splits the result
->#pipes it into the n50 function and to read from standard input
->#redirect to reports/n50.txt 
+>```
+#pipes it into the n50 function and to read from standard input
+#redirect to reports/n50.txt 
+>```
 >| fold -w 60 \ #cuts characters by 60 within each line 
 >> $processed/unitigs.fa
->#Output file is unitigs.fa which is in fasta file and cut into 60 characters 
->#To see the N50 of my assembled sequence 
->less $reports/n50.txt
->#n50 - 4,494,246 
->#To see the L50 of my assembled sequence/more information 
->faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
->#L50 - 8 
 >```
+#Output file is unitigs.fa which is in fasta file and cut into 60 characters 
+#To see the N50 of my assembled sequence 
+>```
+>less $reports/n50.txt
+>```
+#n50 - 4,494,246 
+#To see the L50 of my assembled sequence/more information 
+>```
+>faSize -detailed $processed/unitigs.fa | sort -k 2,2nr | less
+>```
+#L50 - 8 
+`
 ***Answer***
  
 - Community Reference's Information 
