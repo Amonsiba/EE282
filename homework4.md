@@ -8,6 +8,7 @@ Author: Alisha N. Monsibais
 
 >Downloads file from the internet - file is in fasta format <br> 
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz` <br>
+>
 >Check File Integrity - downloads checksum file and check the checksum using md5sum program <br>
 >`wget ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/md5sum.txt`<br> 
 >`md5sum --check <(grep dmel-all-chromosome-r6.36.fasta.gz md5sum.txt)` 
@@ -208,7 +209,7 @@ _Text Files were downloaded and process in an R script:_
 **1. Calculate the N50 of your assembly and compare it to the Drosophila community reference's contig N50**<br>
 Drosophila community reference's contig [N50](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4)
 
-_Code use output file from previous section_
+_Code uses output file from previous section_
 
 > 
 >To view the N50 of my assembled sequence <br>
@@ -223,14 +224,15 @@ _Code use output file from previous section_
  
 **1. Community Reference's Information** 
 - N50  21,485,538
-- L50  3 <br>
+- L50  3
+
 **2.  My Assembly's Inforation** 
 - N50  4,494,246
 - L50  8
 
 My assembly compared to the community assembly indicates that overall my assembly had smaller contigs in length.
-This means that 50% of the genome in my assembly is represented by the 8 contigs, while the community assembly is 
-represented by 3 contigs. This indicates the the references assembly is a higher quality. 
+This means that 50% of the genome in my assembly is represented by 8 contigs, while the community assembly is 
+represented by 3 contigs. This indicates the the references assembly is higher quality. 
 
 **2. Compare your assembly to both the contig assembly and the scaffold assembly from the Drosophilia melmanogaster on FlyBase using a contiguity plot**
 
@@ -249,10 +251,10 @@ represented by 3 contigs. This indicates the the references assembly is a higher
 >Used in downstream code to obtain the file for D. melanogaster for the contig assembly and scaffold assembly<br> 
 >`r6url="ftp://ftp.flybase.net/releases/current/dmel_r6.36/fasta/dmel-all-chromosome-r6.36.fasta.gz"` <br>
 >
->Makes 3 files in the tmp folder 
+>Makes 3 files in the tmp folder <br>
 >`mkfifo tmp/{r6scaff,r6ctg,myseq}_fifo`
 >
->Obtains the fly base genome and processes the file in a first in first out approach to obtain the lengths of the sequence for scaffold and contig assembly.  
+>Obtains the Flybase genome and processes the file in a first in first out approach to obtain the lengths of the sequence for scaffold and contig assembly.  
 >```
 >wget -O - -q $r6url \
 >| tee >( \
@@ -282,28 +284,25 @@ represented by 3 contigs. This indicates the the references assembly is a higher
 >| tee r6_v_myseq.png \
 >| display 
 >```
->Removed files
->```
->rm tmp/{r6scaff,r6ctg,myseq}_fifo
->```
+>Removed files <br>
+>`rm tmp/{r6scaff,r6ctg,myseq}_fifo`
+
 Contiguity plot<br>
 ![image](https://i.ibb.co/VWqfTJz/contiguityplot1.png)
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
->```
->#BUSCO for code for Flybase genome assembly  
->busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome
->#Score |C:99.5%[S:99.1%, D:0.4],F:0.2%,M:0.3%,n:3285
->```
+>
+>BUSCO code for Flybase genome assembly  
+>`busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco_flybase -m genome`
+>
 ![image](https://i.ibb.co/QCPT2tR/busco.png)
->```
->#BUSCO code for Solarese fastq file genome assembly 
->busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa \
-> -l diptera_odb10 -o dmel_busco_solarese -m genome
->#Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
->```
+>
+>BUSCO code for Solarese fastq file genome assembly 
+>`busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa \
+> -l diptera_odb10 -o dmel_busco_solarese -m genome`
+>
 ![image](https://i.ibb.co/Vxs89gJ/busco-sol.png)
 
 Overall, the complete BUSCO score for the Flybase genome assembly was 99.5% indicating a high quality genome assembly. However, my assembly on the other hand had a complete BUSCO score of 0.2% indicating that my assembly was of very poor quality. 
-
+Additionally, if you look at the missing BUSCO section you can see that a majority of my sequence was missing at 3212, while only 12 were missing for the Flybase genome assembly. 
 
