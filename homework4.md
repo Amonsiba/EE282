@@ -335,7 +335,7 @@ Compare your assembly to the contig assembly from Drosophila melanogaster on Fly
 >NUCmer is a pipeline used for the alignment of closely related nucleotides sequences <br>
 >`numer dmel.contig.fasta my.contig.fasta`
 >
->delta-filter - this uses the output file from NUCmer which then filters down the input verison <br>  
+>delta-filter - this uses the output file from NUCmer which then filters down the input verison<br> 
 >`delta-filter out.delta` 
 >
 >mummerplot - the plot shows the alignment in a dotplot were the seqences are on the axis and a point is plotted were the similarities are located. <br>
