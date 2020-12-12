@@ -305,3 +305,32 @@ Contiguity plot<br>
 Overall, the complete BUSCO score for the Flybase genome assembly was 99.5% indicating a high quality genome assembly. However, my assembly on the other hand had a complete BUSCO score of 0.2% indicating that my assembly was of very poor quality. 
 Additionally, if you look at the missing BUSCO section you can see that a majority of my sequence was missing at 3212, while only 12 were missing for the Flybase genome assembly. 
 
+**Extra Credit**
+Compare your assembly to the contig assembly from Drosophila melanogaster on FlyBase using a dotplot constructed with 'MUMmer'
+
+>Installs the appropriate programs <br>
+>`conda install -c bioconda mummer`<br>
+>`conda install -c bioconda/label/cf201901 mummer`<br>
+
+>Split the FlyBase sequence into contig assembly by splitting at the Ns <br>
+>`faSplitByN dmel-all-chromosome-r6.36.fasta dmel.contig.fasta 10'
+
+>Splits my assembly into a contig assembly by splitting at the Ns.  
+>`faSplitByN unitigs.fa my.contig.fasta 10`
+
+
+>MUMmer with ref file and my contig file <br>
+>This program identifies the maximal unique matches between sequences, for our dotplot <br>
+>`mummer dmel.contig.fasta my.contig.fasta`
+
+>NUCmer is a pipeline used for the alignment of closely related nucleotides sequences <br>
+>`numer dmel.contig.fasta my.contig.fasta`
+
+>delta-filter - this uses the output file from NUCmer which then filters down the input verison <br>  
+>`delta-filter out.delta` 
+
+>mummerplot - the plot shows the alignment in a dotplot were the seqences are on the axis and a point is plotted were the similarities are located. <br>
+>`mummerplot out.delta` 
+
+![image](https://i.ibb.co/Rcgkwm0/mummerplot.png)
+Dotpot analysis of my sequence in contig format along with the Drosophilia melanogaster sequence in contig format. The dots and lines indicate the sequences are similar. The graph shows alot of dots and lines indicated that both sequences have alot of similarities.  
