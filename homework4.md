@@ -104,9 +104,13 @@ _Text Files were downloaded and process in an R script:_
 ![image](http://i.ibb.co/9YRLXtn/1-2.jpg)
 ![image](http://i.ibb.co/0XQJJRs/1-1.jpg)
 
+The histogram for the >100kb is skewed to the right and shows a small amount of sequences which is to be expacted as the faSize indicate there were only 7. Additionally, for the histogram of <=100kb is skewed to the left and shows alot more sequences which was also noted in the faSize, as the sequence was noted at 1863. 
+
 **2. Sequence GC% distribution (Histogram)**
 ![image](https://i.ibb.co/hf5Lt08/2-2.jpg)
 ![image](https://i.ibb.co/xjL7vFj/2-1.jpg)
+
+The histogram for GC% content of sequences >100kb did not show any real trends; however, the histogram for GC% content for sequences <=100kb showed normal distribution centered around the middle. 
 
 **3. Cumulative sequence size sorted from the larges to smallest sequences**
 
@@ -117,11 +121,15 @@ _Text Files were downloaded and process in an R script:_
 >`plotCDF <(cut -f 1 dmelr6.gt.txt) /dev/stdout | display`
 
 ![image](https://i.ibb.co/KFG5sL0/3-1.jpg)
+
+Plot only contains 7 sequences, but most of the genome which is repreasented by the steep line that appears cut off. 
  
 >For the sequence <=100 kb:<br>
 >`plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display`
 
 ![image](https://i.ibb.co/WpqNmHJ/3-2.png)
+
+Plot contains alot of squences but grows slowly indicated that size of the sequences are small. 
 
 ## Part II: Genome assembly 
 
@@ -333,4 +341,6 @@ Compare your assembly to the contig assembly from Drosophila melanogaster on Fly
 >`mummerplot out.delta` 
 
 ![image](https://i.ibb.co/Rcgkwm0/mummerplot.png)
+
+
 Dotpot analysis of my sequence in contig format along with the Drosophilia melanogaster sequence in contig format. The dots and lines indicate the sequences are similar. The graph shows alot of dots and lines indicated that both sequences have alot of similarities.  
