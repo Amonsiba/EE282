@@ -122,14 +122,14 @@ The histogram for GC% content of sequences >100kb did not show any real trends; 
 
 ![image](https://i.ibb.co/KFG5sL0/3-1.jpg)
 
-Plot only contains 7 sequences, but most of the genome which is repreasented by the steep line that appears cut off. 
+Plot only contains 7 sequences but most of the genome, this is indicated by a steep line that appears to be cut off. 
  
 >For the sequence <=100 kb:<br>
 >`plotCDF <(cut -f 1 dmelr6.lte.txt) /dev/stdout | display`
 
 ![image](https://i.ibb.co/WpqNmHJ/3-2.png)
 
-Plot contains alot of squences but grows slowly indicated that size of the sequences are small. 
+Plot contains alot of sequences but grows slowly indicated that size of the sequences are small. 
 
 ## Part II: Genome assembly 
 
@@ -298,6 +298,8 @@ represented by 3 contigs. This indicates the the references assembly is higher q
 Contiguity plot<br>
 ![image](https://i.ibb.co/VWqfTJz/contiguityplot1.png)
 
+The contiguity plot shows 3 lines: blue = my contig assembly, red = FlyBase contig assembly and green = FlyBase scaffold assembly. This graph demonstrates that my contig assembly is not as high of quality as the FlyBase verison, because it does not grow as fast as the other two. Additionally, the FlyBase contig and scaffold assemblies are similar as to be expected. 
+
 **3. Calculate BUSCO score of both assemblies and compare them.**
 >
 >BUSCO code for Flybase genome assembly <br> 
@@ -313,7 +315,7 @@ Contiguity plot<br>
 Overall, the complete BUSCO score for the Flybase genome assembly was 99.5% indicating a high quality genome assembly. However, my assembly on the other hand had a complete BUSCO score of 0.2% indicating that my assembly was of very poor quality. 
 Additionally, if you look at the missing BUSCO section you can see that a majority of my sequence was missing at 3212, while only 12 were missing for the Flybase genome assembly. 
 
-**Extra Credit**
+**Extra Credit**<br>
 Compare your assembly to the contig assembly from Drosophila melanogaster on FlyBase using a dotplot constructed with 'MUMmer'
 
 >Installs the appropriate programs <br>
@@ -321,7 +323,7 @@ Compare your assembly to the contig assembly from Drosophila melanogaster on Fly
 >`conda install -c bioconda/label/cf201901 mummer`<br>
 
 >Split the FlyBase sequence into contig assembly by splitting at the Ns <br>
->`faSplitByN dmel-all-chromosome-r6.36.fasta dmel.contig.fasta 10'
+>`faSplitByN dmel-all-chromosome-r6.36.fasta dmel.contig.fasta 10`
 
 >Splits my assembly into a contig assembly by splitting at the Ns.  
 >`faSplitByN unitigs.fa my.contig.fasta 10`
@@ -343,4 +345,4 @@ Compare your assembly to the contig assembly from Drosophila melanogaster on Fly
 ![image](https://i.ibb.co/Rcgkwm0/mummerplot.png)
 
 
-Dotpot analysis of my sequence in contig format along with the Drosophilia melanogaster sequence in contig format. The dots and lines indicate the sequences are similar. The graph shows alot of dots and lines indicated that both sequences have alot of similarities.  
+This is a dotpot analysis of my sequence in contig format along with the Drosophilia melanogaster sequence in contig format. The dots and lines indicate the sequences are similar. The graph shows alot of dots and lines indicated that both sequences have alot of similarities.  
