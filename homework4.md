@@ -298,7 +298,7 @@ represented by 3 contigs. This indicates the the references assembly is higher q
 Contiguity plot<br>
 ![image](https://i.ibb.co/VWqfTJz/contiguityplot1.png)
 
-The contiguity plot shows 3 lines: blue = my contig assembly, red = FlyBase contig assembly and green = FlyBase scaffold assembly. This graph demonstrates that my contig assembly is not as high of quality as the FlyBase verison, because it does not grow as fast as the other two. Additionally, the FlyBase contig and scaffold assemblies are similar as to be expected. 
+The contiguity plot shows 3 lines: blue = my contig assembly, red = FlyBase contig assembly and green = FlyBase scaffold assembly. This graph demonstrates that my contig assembly is not as high of quality as the FlyBase verisons, because it does not grow as fast as the other two. Additionally, the FlyBase contig and scaffold assemblies are similar as to be expected. 
 
 **3. Calculate BUSCO score of both assemblies and compare them.**
 >
@@ -321,24 +321,23 @@ Compare your assembly to the contig assembly from Drosophila melanogaster on Fly
 >Installs the appropriate programs <br>
 >`conda install -c bioconda mummer`<br>
 >`conda install -c bioconda/label/cf201901 mummer`<br>
-
+>
 >Split the FlyBase sequence into contig assembly by splitting at the Ns <br>
 >`faSplitByN dmel-all-chromosome-r6.36.fasta dmel.contig.fasta 10`
-
+>
 >Splits my assembly into a contig assembly by splitting at the Ns.  
 >`faSplitByN unitigs.fa my.contig.fasta 10`
-
-
+>
 >MUMmer with ref file and my contig file <br>
 >This program identifies the maximal unique matches between sequences, for our dotplot <br>
 >`mummer dmel.contig.fasta my.contig.fasta`
-
+>
 >NUCmer is a pipeline used for the alignment of closely related nucleotides sequences <br>
 >`numer dmel.contig.fasta my.contig.fasta`
-
+>
 >delta-filter - this uses the output file from NUCmer which then filters down the input verison <br>  
 >`delta-filter out.delta` 
-
+>
 >mummerplot - the plot shows the alignment in a dotplot were the seqences are on the axis and a point is plotted were the similarities are located. <br>
 >`mummerplot out.delta` 
 

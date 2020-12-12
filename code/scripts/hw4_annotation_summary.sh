@@ -129,27 +129,29 @@ busco -c 31 -i dmel-all-chromosome-r6.36.fasta.gz -l diptera_odb10 -o dmel_busco
 busco -c 31 -i ~/nanopore_assembly/nanopore_assembly/data/processed/unitigs.fa -l diptera_odb10 -o dmel_busco_solarese -m genome
 #Score |C:0.2%[0.2%,D:0.0%],F:2.0%,M:97.8%,n:3285
 
-
-
-
-
-
-
-
-
-
 #EC. Compare your assembly to the contig assembly from Drosophila melanogaster on FlyBase using a dotplot constructed with MUMmer
-###Random Code
-#Assembly assessment
-#1. Calculate the N50 of your asssemply and compare it to the Drosophilia community reference's contig N50
-#Code for sequence n>100kb
-gawk '{tot=tot+$1; print $1 "\t" tot} END {print tot}' dmelr6.gt.txt | sort -k1,1rn | gawk 'NR==1 {tot=$1} NR>1 && $2/tot >= 0.5 {print $0 "\t" $2/tot}' | column -t | head -1
-#Code for sequence n<=100kb
-gawk '{tot=tot+$1; print $1 "\t" tot} END {print tot}' dmelr6.lte.txt | sort -k1,1rn | gawk 'NR==1 {tot=$1} NR>1 && $2/tot >= 0.5 {print $0 "\t" $2/tot}' | column -t | head -1
+#Installs the appropriate programs 
+conda install -c bioconda mummer
+conda install -c bioconda/label/cf201901 mummer
 
-##This code is for the whole sequence. Nee to seperate n>100kb n<=100kb
-#Made file that contains length of sequences, and gc content
-bioawk -c fastx '{ print length($seq) "\t" gc($seq) }' dmel-all-chromosome-r6.36.fasta.gz | sort  -k1,1rn > dmelr6.all.txt
-#Makes code to print the sequence length, then the accumulated amount, then the precent of the total genome
-gawk '{t = t + $1; print $1 "\t" t "\t" t/143726002}' dmelr6.all.txt | column -t | less
- 
+#Split the contig assembly from FlyBase
+faSplitByN dmel-all-chromosome-r6.36.fasta dmel.contig.fasta 10
+
+#Splits my contig assembly 
+faSplitByN unitigs.fa my.contig.fasta 10
+
+
+#MUMmer with ref and my contig files
+#Identifies the maximal unique matches between sequences, for out dotplot
+mummer dmel.contig.fasta my.contig.fasta
+
+#NUCmer is a pipeline used for the alignment of closely related nucleotides sequences
+numer dmel.contig.fasta my.contig.fasta
+
+#delta-filter - this uses the output file from NUCmer which then filters down 
+the input verison  
+delta-filter out.delta 
+
+#mummerplot - the plot shows the alignment in a dotplot were the seqences are on the 
+axis and a point is plotted were the similarities are located. 
+mummerplot out.delta 
