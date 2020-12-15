@@ -23,7 +23,6 @@ All necessary programs to obtain the final Roary figures were initally downloade
 | conda config --add channels bioconda |
 | conda install roary |
 
-
 **Table 2**: Install Codes for Additional Programs required.
 | Additional Programs |
 | --------------------------- |
@@ -32,6 +31,10 @@ All necessary programs to obtain the final Roary figures were initally downloade
 | conda install -c anaconda seaborn |
 | conda install -c anaconda pandas |
 | conda install fasttree |
+
+![Roary_steno](https://i.ibb.co/597p7ST/steno.png) <br>
+**Figure 2**: Output files obtained after completion of program Roary. 
+
 
 
 
