@@ -10,7 +10,7 @@ The following eight steno phages were downloaded from NCBI: [MG189906.1](https:/
 **Figure 1**: All processed gff files located in GFF directory.   
 
 ### Roary Section 
-All necessary programs to obtain the final Roary figures were initally downloaded (Table 1 and Table 2). The gff files that were combined into the GFF directory were then used for the program Roary. After completion of Roary, the program produced an output directory called "steno" which contained 20 different files (Figure 2).Roary output data was further processed to produce 3 figures: Pangenome frequency, Pangenome matrix of present and absent genes, and Pangenome pie chart. This was accomplished with 3 steps. The first step was to obtain 'roary_plots.pry' a script that produces the output figures. The second step was to use the alignment file produced by Roary in the program FastTree to generate a phylogentic tree. And lastly, this was all compiled into one code.      
+All necessary programs to obtain the final Roary figures were initally downloaded (Table 1 and Table 2). The gff files that were combined into the GFF directory were then used for the program Roary. After completion of Roary, the program produced an output directory called "steno" which contained 20 different files (Figure 2). Roary output data (gene_presence_absence.csv) was further processed to produce three figures: Pangenome frequency, Pangenome matrix, and Pangenome pie chart. This was accomplished with three steps. The first step was to obtain 'roary_plots.pry' a script that produces the output figures. The second step was to use the alignment file (core_gene_alignmnet.aln) produced by Roary in the program FastTree to generate a phylogentic tree. And lastly, this was all compiled into one code: 'python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv'.       
 
 **Table 1**: Install Codes for Roary.
 | Installation of Roary Program |
@@ -32,6 +32,11 @@ All necessary programs to obtain the final Roary figures were initally downloade
 
 ![Roary_steno](https://i.ibb.co/597p7ST/steno.png) <br>
 **Figure 2**: Output files obtained after completion of program Roary. 
+
+### R Script for Data Analysis
+Additionally, after completion of the Roary program R files were also obtained and downloaded. The R files were processed with the used of an R script
+
+
 
 ## Results
 
