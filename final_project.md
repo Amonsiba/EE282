@@ -34,7 +34,7 @@ All necessary programs to obtain the final Roary figures were initally downloade
 **Figure 2**: Output files obtained after completion of program Roary. 
 
 ### R Script for Data Analysis
-Additionally, after completion of the Roary program R files were also obtained and downloaded. The R files were processed with the used of an [R script](https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R) provided by Andrew Page. 
+Additionally, after completion of the Roary program, R files were also obtained and downloaded. The R files were processed with the used of an [R script](https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R) provided by Andrew Page [2]. 
 
 ## Results
 
@@ -50,10 +50,10 @@ Additionally, after completion of the Roary program R files were also obtained a
 ![R](https://i.ibb.co/WVzqgxx/Conserved-vs-Total-Genes.png) <br>
 **Figure 6**: Conserved vs Total Genes. 
 
-
 ## Discussion 
 
 
 
 ## Referency 
 [1] Prokka
+[2] R script andrew page 
