@@ -30,15 +30,22 @@ All necessary programs to obtain the final Roary figures were initally downloade
 | conda install -c anaconda pandas |
 | conda install fasttree |
 
-
-
 ![Roary_steno](https://i.ibb.co/597p7ST/steno.png) <br>
 **Figure 2**: Output files obtained after completion of program Roary. 
 
-
-
-
 ## Results
+
+![Pangenome-frequency](https://i.ibb.co/DLYnXNy/pangenome-frequency.png) <br>
+**Figure 3**: Pangenome Frequency. Frequency of genes versus the number of genomes analyzed.
+
+![Pangenome-martix](https://i.ibb.co/MgGn3BB/pangenome-matrix.png) <br>
+**Figure 4**: Pangenome Matrix. Tree comparison in a matrix format that illustrate the presence and absence of core and accessory genes.
+
+![Pangenome-pie](https://i.ibb.co/8dQDn3G/pangenome-pie.png) <br>
+**Figure 5**: Pangenome Pie. A pie chart of the breakdown of genes and the number of isolate they are present in. 
+
+![R](https://i.ibb.co/WVzqgxx/Conserved-vs-Total-Genes.png) <br>
+**Figure 6**: Conserved vs Total Genes. 
 
 
 ## Discussion 
