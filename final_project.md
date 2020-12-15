@@ -34,9 +34,7 @@ All necessary programs to obtain the final Roary figures were initally downloade
 **Figure 2**: Output files obtained after completion of program Roary. 
 
 ### R Script for Data Analysis
-Additionally, after completion of the Roary program R files were also obtained and downloaded. The R files were processed with the used of an R script
-
-
+Additionally, after completion of the Roary program R files were also obtained and downloaded. The R files were processed with the used of an [R script](https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R) provided by Andrew Page. 
 
 ## Results
 
