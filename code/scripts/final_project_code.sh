@@ -32,19 +32,39 @@ prokka --kingdom Viruses --outdir prokka_GCA_000903135 --genus Teseptimavirus --
 prokka --kingdom Viruses --outdir prokka_GCA_009388225 --genus Ackermannviridae --locustag GCA_009388225 GCA_009388225.1_ASM938822v1_genomic.fna
 prokka --kingdom Viruses --outdir prokka_GCA_009388065 --genus Ackermannviridae --locustag GCA_009388065 GCA_009388065.1_ASM938806v1_genomic.fna
 
-#Output Directory will contain 11 files, I am only interested in the .gff file. The .gff file is teh master annotation of GFF3 format, containing the sequences and annotations
+#Output Directory will contain 11 files, I am only interested in the .gff file. The .gff file is the master annotation of GFF3 format, containing the sequences and annotations
 
 #Renames file for easy processing and identification of original file. 
-#This was done for each of the 8 viruses
+#This was done for each of the 8 viruses, identification number of each virus is used along with .gff to indicate what file type. 
 cd ~/myrepos/ee282/data/raw/prokka_GCA_002956145/ 
 mv PROKKA_12112020.gff 002956145.gff 
 
-#Makes new directory for .gff files, which all should be stored in the same location 
+#Makes new directory for .gff files, which all should be stored in the same location, for processing the Roary Program 
 cd ~/myrepos/ee282/data/processed/ 
-mkdir gff
+mkdir GFF
 
-#copies only relabeled gff file to GFF folder for processing of Roary File 
+#Copies only relabeled gff file to GFF folder for processing of Roary File
+#This was done for each of the 8 viruses individually 
+cd ~/myrepos/ee282/data/raw/prokka_GCA_002956145
 cp 002956145.gff ~/myfirstgitproject/data/processed/GFF/
+
+#Confirmation that all files were copied to the GFF folder 
+cd ~/myrepos/ee282/data/processed/GFF
+tree
+
+#Installing Roary
+conda config --add channels r
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda install roary
+
+#Intalling additional programs that are needed to generate the plots 
+conda install -c anaconda numpy
+conda install -c conda-forge matplotlib
+conda install -c anaconda seaborn
+conda install -c anaconda pandas
+conda install fasttree
 
 
 
