@@ -10,13 +10,12 @@ The following eight steno phages were downloaded from NCBI: [MG189906.1](https:/
 **Figure 1**: All processed gff files located in GFF directory.   
 
 ### Roary Section 
-All necessary programs to obtain the final Roary figures were initally downloaded (Figure 2) 
+All necessary programs to obtain the final Roary figures were initally downloaded (Table 1 and Table 2). The gff files that were combined into the GFF directory were then used for the program Roary. After Roary was ran, the program produced an output directory called "steno" which contained 20 different files.   
 
 
-![gff](https://i.ibb.co/68DDJV6/gff.png) <br>
-**Figure 2**: All necessary programs needed to complete Roary.
+**Table 1**: Install Codes for Roary.
 
-| Roary Program |
+| Roary Program Installation |
 | ------------------------ |
 | conda config --add channels r |
 | conda config --add channels defaults |
@@ -24,12 +23,15 @@ All necessary programs to obtain the final Roary figures were initally downloade
 | conda config --add channels bioconda |
 | conda install roary |
 
-Additioanl Programs 
-conda install -c anaconda numpy
-conda install -c conda-forge matplotlib
-conda install -c anaconda seaborn
-conda install -c anaconda pandas
-conda install fasttree
+
+**Table 2**: Install Codes for Additional Programs required.
+| Additional Programs |
+| --------------------------- |
+| conda install -c anaconda numpy |
+| conda install -c conda-forge matplotlib |
+| conda install -c anaconda seaborn |
+| conda install -c anaconda pandas |
+| conda install fasttree |
 
 
 
