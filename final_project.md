@@ -53,8 +53,16 @@ Overall, the results demonstrate that the eight steno phages are unique and dist
 
 ## Discussion 
 
+The analysis of this project demonstrates that the eight steno phages evaluated are distinctly different from one another. This is supported by the literature as bacteriophages are the most abundant and diverse biological element in the world [3]. With the complied analysis, there were three phages that consistently demonstrated similarities throughout the investigation. This was noted in the Pangenome Frequency in which three genomes were identified to have elevated frequencies (Figure 3). Additionally, the Pangenome Matrix also identified three genomes that contain similarities in comparison to their presence and absence of core and accessory genes in the beginning section of the graph (Figure 4). Since no core genes were identified in the Pangenome Pie chart (Figure 5), these similarities must have come from accessory genes. Lastly regarding the three similar genomes, the conserved versus total genes also denoted three genomes with the black line (Figure 6), indicating that conserved genes were only present in three of the eight strains. 
+
+Furthermore, since core genes are mainly associated with housekeeping gene, it would make sense that viral genomes would lack these [4 and 5]. This is due to the fact that viral genomes most likely use host housekeeping genes when they take over the cellular machinery [6]. 
+
 
 
 ## Referency 
 [1] Prokka
-[2] R script andrew page 
+[2] R script andrew page
+[3] Phage diversity
+[4] medina, 2005
+[5] pan-genome”, 2005
+[6]
