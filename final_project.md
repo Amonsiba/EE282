@@ -66,14 +66,17 @@ Pangenome frequency was assessed and plotted on a graph that contained the numbe
 
 ## Discussion 
  
+Overall, the analysis of this project demonstrates that the eight steno phages evaluated are distinctly different from one another. This is supported by the literature as bacteriophages are the most abundant and diverse biological element in the world [7]. With the complied analysis, three phages consistently demonstrated similarities throughout the investigation. This was noted in the pangenome frequency in which three genomes were identified to have elevated frequencies (Figure 3). Additionally, the pangenome matrix also identified three genomes that contain similarities in comparison to their presence and absence of core and accessory genes in the beginning section of the graph (Figure 4). Since no core genes were identified in the pangenome pie chart (Figure 5), these similarities must have come from shell genes which were assessed as 213 genes with this data set. The conserved versus total genes also denoted three genomes with the black line (Figure 6), indicating that conserved genes were only present in three of the eight strains. When reviewing the family/genus of all the bacteriophages, three of the selected phages were within the same family, Ackermannviridae. All of them were considered unclassified Ackermannviridae at the genus level, also supporting that even if these viruses are distantly related, they are also distinct from one another. 
 
+Furthermore, since core genes are mainly associated with housekeeping gene, it would make sense that viral genomes would lack these particular genes [8]. This is because viral genomes most likely use host housekeeping genes when they take over cellular machinery [2]. For future direction of this project, I would like to assess the host genomes as I feel this would contain and establish more pertinent information regarding the phage-bacteria interactions. Ultimately, by explore phage-bacteria interactions using a bioinformatic approach we wish to provide further supporting evidence that Phage Therapy is a viable treatment option.  
 
+## References 
 
-## Referency 
 [1] Seemann, T. (2014). Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), 2068-2069. doi:10.1093/bioinformatics/btu153 <br>
 [2] Page, A. J., Cummins, C. A., Hunt, M., Wong, V. K., Reuter, S., Holden, M. T. G., . . . Parkhill, J. (2015). Roary: rapid large-scale prokaryote pan genome analysis. Bioinformatics, 31(22), 3691-3693. doi:10.1093/bioinformatics/btv421 <br>
 [3] https://github.com/sanger-pathogens/Roary/blob/master/contrib/roary_plots/roary_plots.py <br>
 [4] Price, M. N., Dehal, P. S., & Arkin, A. P. (2010). FastTree 2--approximately maximum-likelihood trees for large alignments. PLoS One, 5(3), e9490. doi:10.1371/journal.pone.0009490 <br>
 [5] https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R  <br>
 [6] Koonin, E. V., & Wolf, Y. I. (2012). Evolution of microbes and viruses: a paradigm shift in evolutionary biology? Front Cell Infect Microbiol, 2, 119. doi:10.3389/fcimb.2012.00119 <br>
-[7]
+[7] Kasman, L. M., & Porter, L. D. (2020). Bacteriophages. In StatPearls. Treasure Island (FL). <br>
+[8] Medini, D., Donati, C., Tettelin, H., Masignani, V., & Rappuoli, R. (2005). The microbial pan-genome. Curr Opin Genet Dev, 15(6), 589-594. doi:10.1016/j.gde.2005.09.006
