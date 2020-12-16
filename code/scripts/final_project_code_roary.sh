@@ -25,7 +25,7 @@ conda install -c conda-forge -c bioconda -c defaults prokka
 
 prokka --kingdom Viruses --outdir prokka_GCA_002956145 --genus Delepquintavirus --locustag GCA_002956145 GCA_002956145.1_ASM295614v1_genomic.fna
 prokka --kingdom Viruses --outdir prokka_GCA_002606605 --genus Ackermannviridae --locustag GCA_002606605 GCA_002606605.1_ASM260660v1_genomic.fna
-prokka --kingdom Viruses --outdir prokka_GCA_008215605 --genus Pradovirus --locustag GCA_008215605 GCA_008215605.1_ASM821560v1_genomic.fna
+prokka --kingdom Viruses --outdir prokka_GCA_008215605 --genus Autographiviridae --locustag GCA_008215605 GCA_008215605.1_ASM821560v1_genomic.fna
 prokka --kingdom Viruses --outdir prokka_GCA_008215305 --genus Podoviridae --locustag GCA_008215305.1_ASM821530v1/GCA_008215305.1_ASM821530v1_genomic.fna
 prokka --kingdom Viruses --outdir prokka_GCA_000917355 --genus Simpcentumvirus --locustag GCA_000917355 GCA_000917355.1_ViralProj240053_genomic.fna
 prokka --kingdom Viruses --outdir prokka_GCA_000903135 --genus Teseptimavirus --locustag GCA_000903135 GCA_000903135.1_ViralProj179429_genomic.fna
@@ -71,8 +71,9 @@ conda install fasttree
 #This line uses Roary "ry" to access and run the program . Syntax -f denotes the output directory file as steno.
 #Syntax -e creates a multiFASTA alignment of core genes using PRANK (a program within the Roary Program). 
 #Syntax -v verbose output to STDOUT. And lastly, Syntax -n uses fast core gene alignment with MAFFT. 
+#-t 1 is used for viral genomes per roary manual 
 cd ~/myrepos/ee282/data/processed/
-ry -f ./steno -e -n -v ./GFF/*.gff 
+roary -f ./steno -e -n -v -t 1 ./GFF/*.gff 
 #This produces a directory called "steno" which contains 20 different files types. These will be used to access
 #information about the 8 steno strains. The data will be used to create interesting plots that illustrate the 
 #similarities or differences amoung the phage genomes.  
