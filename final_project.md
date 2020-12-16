@@ -50,7 +50,7 @@ All necessary programs to obtain the final Roary figures were initially download
 Additionally, after completion of the Roary program, R files were also obtained and downloaded. The R files were processed with the used of an [R script](https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R) provided by Andrew Page [5]. 
 
 ## Results
-Overall, the results demonstrate that the eight steno phages are unique and distinct from one another based on genetic analysis. Pangenome Frequency was assessed and plotted on a graph that contained the number of genes on the y axis against the genomes evaluated on the x axis. Blue bars indicate the amount of genes found in a single genome with elevated frequencies. The steno phages that were analyzed only contained three genomes which had a gene frequency greater than zero (Figure 3). The Pangenome Matrix, or the Roary matrix, assessed if the phages were distinctly different from one another regarding the presence and absence of core and accessory genes. The navy blue indicates the present of similarities while the light blue represented the absence of similarities. The total amount of genes in the analysis was 795 which encompassed all eight genomes. Furthermore, the matrix also demonstrates that the eight phage genomes varied in size (Figure 4). The Pangenome Pie chart is a breakdown of the different type of gene which includes core gene, softcore genes, shell genes, and cloud genes. No core or soft-core genes were present in the eight evaluated steno phages; however, there were 213 shell genes noted which includes genes present in 2 or more strains. Cloud genes included 582 and are only found in a single strain (Figure 5). Conserved versus Total Genes were also assessed across all eight steno phages. The total number of genes which was represented by a dotted line almost reached 800 genes, while only 3 strains contained conserved genes which was represented by a black line (Figure 6). 
+Pangenome frequency was assessed and plotted on a graph that contained the number of genes on the y-axis against the genomes evaluated on the x-axis. Blue bars represent the number of genes found in a single genome with elevated frequencies. The steno phages that were analyzed only contained three genomes that had a gene frequency greater than zero (Figure 3). The pangenome matrix, or the Roary matrix, assessed if the phages were distinctly different from one another regarding the presence and absence of core and accessory genes. The navy blue indicates the presence of similarities while the light blue represents the absence of similarities. The total amount of genes in the analysis was 795 which encompassed all eight genomes. Furthermore, the matrix also demonstrates that the eight phage genomes varied in size (Figure 4). The pangenome pie chart is a breakdown of the different type of gene which includes core gene, softcore genes, shell genes, and cloud genes. No core or soft-core genes were present in the eight evaluated steno phages; however, there were 213 shell genes noted which includes genes present in 2 or more strains. Cloud genes included 582 and are only found in a single strain (Figure 5) [6]. Conserved versus total genes were also assessed across all eight steno phages. The total number of genes which was represented by a dotted line almost reached 800 genes, while only 3 strains contained conserved genes, represented by a black line (Figure 6).  
 
 ![Pangenome-frequency](https://i.ibb.co/DLYnXNy/pangenome-frequency.png) <br>
 **Figure 3**: Pangenome Frequency. Frequency of genes versus the number of genomes analyzed.
@@ -62,13 +62,10 @@ Overall, the results demonstrate that the eight steno phages are unique and dist
 **Figure 5**: Pangenome Pie. A pie chart of the breakdown of genes and the number of isolate they are present in. 
 
 ![R](https://i.ibb.co/WVzqgxx/Conserved-vs-Total-Genes.png) <br>
-**Figure 6**: Conserved vs Total Genes. 
+**Figure 6**: Conserved versus Total Genes. 
 
 ## Discussion 
-
-The analysis of this project demonstrates that the eight steno phages evaluated are distinctly different from one another. This is supported by the literature as bacteriophages are the most abundant and diverse biological element in the world [3]. With the complied analysis, there were three phages that consistently demonstrated similarities throughout the investigation. This was noted in the Pangenome Frequency in which three genomes were identified to have elevated frequencies (Figure 3). Additionally, the Pangenome Matrix also identified three genomes that contain similarities in comparison to their presence and absence of core and accessory genes in the beginning section of the graph (Figure 4). Since no core genes were identified in the Pangenome Pie chart (Figure 5), these similarities must have come from accessory genes. Lastly regarding the three similar genomes, the conserved versus total genes also denoted three genomes with the black line (Figure 6), indicating that conserved genes were only present in three of the eight strains. 
-
-Furthermore, since core genes are mainly associated with housekeeping gene, it would make sense that viral genomes would lack these [4 and 5]. This is due to the fact that viral genomes most likely use host housekeeping genes when they take over the cellular machinery [6]. 
+ 
 
 
 
@@ -78,4 +75,5 @@ Furthermore, since core genes are mainly associated with housekeeping gene, it w
 [3] https://github.com/sanger-pathogens/Roary/blob/master/contrib/roary_plots/roary_plots.py <br>
 [4] Price, M. N., Dehal, P. S., & Arkin, A. P. (2010). FastTree 2--approximately maximum-likelihood trees for large alignments. PLoS One, 5(3), e9490. doi:10.1371/journal.pone.0009490 <br>
 [5] https://github.com/sanger-pathogens/Roary/blob/master/bin/create_pan_genome_plots.R  <br>
-[6]
+[6] Koonin, E. V., & Wolf, Y. I. (2012). Evolution of microbes and viruses: a paradigm shift in evolutionary biology? Front Cell Infect Microbiol, 2, 119. doi:10.3389/fcimb.2012.00119 <br>
+[7]
