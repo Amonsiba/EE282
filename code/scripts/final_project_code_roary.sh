@@ -36,11 +36,11 @@ prokka --kingdom Viruses --outdir prokka_GCA_009388065 --genus Ackermannviridae 
 #The .gff file is the master annotation of GFF3 format, containing the sequences and annotations
 
 #Renames file for easy processing and identification of original file. 
-#This was done for each of the 8 viruses, identification number of each virus is used along with .gff to indicate what file type. 
+#This was done for each of the 8 viruses individually. Identification number of each virus is used along with .gff to indicate what file type. 
 cd ~/myrepos/ee282/data/raw/prokka_GCA_002956145/ 
 mv PROKKA_12112020.gff 002956145.gff 
 
-#Makes new directory for .gff files, which all should be stored in the same location, for processing the Roary Program 
+#Makes new directory for .gff files. All gff files should be stored in the same location for processing the Roary Program 
 cd ~/myrepos/ee282/data/processed/ 
 mkdir GFF
 
@@ -68,9 +68,9 @@ conda install -c anaconda pandas
 conda install fasttree
 
 #Running Program Roary. 
-#This line uses Roary "ry" to access and run the program . Syntax -f denotes the output directory file as steno.
+#This line uses Roary "roary" to access and run the program . Syntax -f denotes the output directory file as steno.
 #Syntax -e creates a multiFASTA alignment of core genes using PRANK (a program within the Roary Program). 
-#Syntax -v verbose output to STDOUT. And lastly, Syntax -n uses fast core gene alignment with MAFFT. 
+#Syntax -v verbose output to STDOUT. And lastly, Syntax -n uses fast core gene alignment with MAFFT and  
 #-t 1 is used for viral genomes per roary manual 
 cd ~/myrepos/ee282/data/processed/
 roary -f ./steno -e -n -v -t 1 ./GFF/*.gff 
@@ -94,10 +94,10 @@ python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv
 display Pangenome_frequency.png
 #2. Pangenome_mixture.png - this will show the tree comparison in a matrix format with the presence and absence of core and accessory genes. 
 display Pangenome_matrix.png
-#3. Pangenome_pie.png - this will show a pie chart with the breakdown of genes and the number of isolate they are present in 
+#3. Pangenome_pie.png - this will show a pie chart with the breakdown of genes and the number of they are present in 
 display Pangenome_pie.png
 
-#Additional Graphical Analysis was completed in R with the use of the following Script:
+#Additional Graphical Analysis was completed in R with the use of the following Script (Provide By Andrew Page's Githut):
 #Roary Script - R section 
 #!/usr/bin/env Rscript
 # ABSTRACT: Create R plots
